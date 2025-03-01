@@ -3,6 +3,8 @@ package com.tomholmes.product.htmx.demo.service;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
+import java.util.List;
+
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -29,6 +31,14 @@ public class CompanyServiceTest
 
         assertNotNull(entity);
         assertEquals(companyId, entity.getCompanyId());
+    }
+
+    @Test
+    public void findAllCompanies()
+    {
+        List<CompanyEntity> companyEntityList = service.findAllCompanies();
+        assertNotNull(companyEntityList);
+        assertEquals(1, companyEntityList.size());
     }
 
 }

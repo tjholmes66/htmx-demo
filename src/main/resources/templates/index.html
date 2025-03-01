@@ -12,14 +12,18 @@
 <body>
     <main class="container">
         <section>
+            
         <h1>Htmx Demo</h1>
+        
         <div id="parent-div"></div>
+        
         <button hx-post="/clicked"
                 hx-trigger="click"
                 hx-target="#parent-div"
                 hx-swap="outerHTML">
             Click Me!
         </button>
+        
         </section>
     </main>
 </body>

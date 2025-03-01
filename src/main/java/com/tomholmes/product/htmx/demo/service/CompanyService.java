@@ -28,4 +28,14 @@ public class CompanyService
         return companyRepo.findAll();
     }
 
+    public CompanyEntity save(CompanyEntity companyEntity)
+    {
+        return companyRepo.save(companyEntity);
+    }
+
+    public void deleteById(Long id)
+    {
+        companyRepo.deleteById(id);
+    }
+
 }
