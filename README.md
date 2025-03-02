@@ -15,5 +15,5 @@ I started looking at Docker about 5 years ago, and created my account on DockerH
 docker build -t htmx-demo-app:latest .
 
 # run the image in container in my-network
-docker run -p 8080:8080 --network my-network htmx-demo-app -t htmx-demo-app --name htmx-demo-app -e SPRING.DATASOURCE.URL=jdbc:mysql://mysql-db:3306/phonebook_db?serverTimezone=UTC
+docker run --env "SPRING_DATASOURCE_URL=jdbc:mysql://mysql-db:3306/phonebook_db?serverTimezone=UTC" -p 8080:8080 --network my-network htmx-demo-app -t htmx-demo-app --name htmx-demo-app
 
