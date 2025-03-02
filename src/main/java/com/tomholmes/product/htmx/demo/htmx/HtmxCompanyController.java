@@ -1,18 +1,18 @@
 package com.tomholmes.product.htmx.demo.htmx;
 
+import java.util.List;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.service.CompanyService;
-
-import lombok.RequiredArgsConstructor;
 
 @Controller
 @RequestMapping("/companys")
@@ -27,48 +27,54 @@ public class HtmxCompanyController
     }
 
     @GetMapping
-    public String listCompanies(Model model)
+    public String listCompanys(Model model)
     {
-        model.addAttribute("companys", companyService.findAllCompanies());
-        return "companys";
+        List<CompanyEntity> companys = companyService.findAllCompanies();
+        model.addAttribute("companys", companys);
+        return "companys/list";
     }
 
-    @GetMapping("/new")
-    public String newCompanyForm(Model model)
+    @GetMapping("/create")
+    public String createCompanyForm(Model model)
     {
         model.addAttribute("company", new CompanyEntity());
-        return "company-form";
+        return "companys/create-form";
     }
 
-    @PostMapping
-    public String createCompany(CompanyEntity company, Model model)
+    @PostMapping("/create")
+    public String createCompany(@ModelAttribute CompanyEntity company, Model model)
     {
         companyService.save(company);
-        model.addAttribute("companys", companyService.findAllCompanies());
-        return "fragments/company-list :: companyRows";
+        List<CompanyEntity> companys = companyService.findAllCompanies();
+        model.addAttribute("companys", companys);
+        return "companys/list::companyList";
     }
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("/edit/{id}")
     public String editCompanyForm(@PathVariable Long id, Model model)
     {
-        model.addAttribute("company", companyService.getCompanyEntityById(id));
-        return "company-form";
+        CompanyEntity company = companyService.findById(id);
+        model.addAttribute("company", company);
+        return "companys/edit-form";
     }
 
-    @PutMapping("/{id}")
-    public String updateCompany(@PathVariable Long id, CompanyEntity company, Model model)
+    @PostMapping("/edit/{id}")
+    public String editCompany(@PathVariable Long id, @ModelAttribute CompanyEntity company, Model model)
     {
         company.setCompanyId(id);
         companyService.save(company);
-        model.addAttribute("companys", companyService.findAllCompanies());
-        return "fragments/company-list :: companyRows";
+        List<CompanyEntity> companys = companyService.findAllCompanies();
+        model.addAttribute("companys", companys);
+        return "companys/list::companyList";
     }
 
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete/{id}")
     public String deleteCompany(@PathVariable Long id, Model model)
     {
         companyService.deleteById(id);
-        model.addAttribute("companys", companyService.findAllCompanies());
-        return "fragments/company-list :: companyRows";
+        List<CompanyEntity> companys = companyService.findAllCompanies();
+        model.addAttribute("companys", companys);
+        return "companys/list::companyList";
     }
+
 }

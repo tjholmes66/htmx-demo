@@ -1,0 +1,15 @@
+<form hx-post="/companys/edit/{id}" th:attrappend-hx-post="${company.companyId}" hx-target="#companyList" hx-swap="outerHTML">
+    
+    <label for="price">Code:</label><br>
+     <input type="text" id="code" name="code" th:value="${company.companyCode}"><br>
+    
+    <label for="name">Name:</label><br>
+    <input type="text" id="name" name="name" th:value="${company.companyName}"><br>
+    
+    <label for="description">Description:</label><br>
+    <input type="text" id="description" name="description" th:value="${company.description}"><br>
+    
+    <button type="submit">Update</button>
+    <button hx-get="/companys" hx-target="#companyForm" hx-swap="innerHTML">Cancel</button>
+    
+</form>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Company List</title>
+    <script src="https://unpkg.com/htmx.org@1.9.6"></script>
+</head>
+<body>
+<h1>Company List</h1>
+<div id="companyList">
+    <table border="1">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Code</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="company : ${companys}">
+            <td th:text="${company.companyId}"></td>
+            <td th:text="${company.companyCode}"></td>
+            <td th:text="${company.companyName}"></td>
+            <td th:text="${company.description}"></td>
+            <td>
+                <button  th:attr="hx-get=@{/companys/edit/{id}(id=${company.companyId})}"   hx-target="#companyForm" hx-swap="innerHTML">Edit</button>
+                <button  th:attr="hx-delete=@{/htmx/delete/{id}(id=${company.companyId})}"  hx-target="#companyList" hx-swap="outerHTML">Delete</button>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+    <button hx-get="/companys/create" hx-target="#companyForm" hx-swap="innerHTML">Add Company</button>
+ <div id = "companyForm"> </div>
+</body>
+</html>

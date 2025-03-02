@@ -23,8 +23,8 @@
                 <td th:text="${company.companyName}"></td>
                 <td th:text="${company.description}"></td>
                 <td>
-                    <button class = "btn btn-secondary" hx-get="@{/companys/{id}/edit(id=${company.id})}" hx-target="#company-form-modal" hx-trigger="click" data-bs-toggle="modal" data-bs-target="#company-form-modal">Edit</button>
-                    <button class = "btn btn-danger" hx-delete="@{/companys/{id}(id=${company.id})}" hx-target="#companyRows" hx-confirm="Are you sure?" >Delete</button>
+                    <button class = "btn btn-secondary" hx-get="@{/companys/{id}/edit(id=${company.companyId})}" hx-target="#company-form-modal" hx-trigger="click" data-bs-toggle="modal" data-bs-target="#company-form-modal">Edit</button>
+                    <button class = "btn btn-danger" hx-delete="@{/companys/{id}(id=${company.companyId})}" hx-target="#companyRows" hx-confirm="Are you sure?" >Delete</button>
                 </td>
             </tr>
             </tbody>

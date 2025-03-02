@@ -27,7 +27,7 @@ public class CompanyServiceTest
     {
         long companyId = 1;
 
-        CompanyEntity entity = service.getCompanyEntityById(companyId);
+        CompanyEntity entity = service.findById(companyId);
 
         assertNotNull(entity);
         assertEquals(companyId, entity.getCompanyId());

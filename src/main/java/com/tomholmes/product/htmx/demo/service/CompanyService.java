@@ -17,7 +17,7 @@ public class CompanyService
         this.companyRepo = companyRepo;
     }
 
-    public CompanyEntity getCompanyEntityById(long companyId)
+    public CompanyEntity findById(long companyId)
     {
         CompanyEntity companyEntity = companyRepo.findById(companyId).orElse(null);
         return companyEntity;
