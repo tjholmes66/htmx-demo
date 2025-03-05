@@ -2,40 +2,29 @@ package com.tomholmes.product.htmx.demo.service;
 
 import java.util.List;
 
-import org.springframework.stereotype.Service;
-
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
-import com.tomholmes.product.htmx.demo.repository.CompanyRepository;
 
-@Service
-public class CompanyService
+public interface CompanyService
 {
-    private CompanyRepository companyRepo;
 
-    public CompanyService(CompanyRepository companyRepo)
-    {
-        this.companyRepo = companyRepo;
-    }
+    List<CompanyEntity> getAllCompanys();
 
-    public CompanyEntity findById(long companyId)
-    {
-        CompanyEntity companyEntity = companyRepo.findById(companyId).orElse(null);
-        return companyEntity;
-    }
+    CompanyEntity getCompanyById(long contactId);
 
-    public List<CompanyEntity> findAllCompanies()
-    {
-        return companyRepo.findAll();
-    }
+    CompanyEntity add(CompanyEntity newCompany);
 
-    public CompanyEntity save(CompanyEntity companyEntity)
-    {
-        return companyRepo.save(companyEntity);
-    }
+    CompanyEntity update(CompanyEntity newCompany);
 
-    public void deleteById(Long id)
-    {
-        companyRepo.deleteById(id);
-    }
+    void remove(long contactId);
+
+    void deleteById(long companyId);
+
+    CompanyEntity ceateNewCompany(CompanyEntity company);
+
+    CompanyEntity findById(long companyId);
+
+    List<CompanyEntity> findAllCompanies();
+
+    CompanyEntity save(CompanyEntity companyEntity);
 
 }

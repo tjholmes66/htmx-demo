@@ -26,7 +26,7 @@
             <td th:text="${company.description}"></td>
             <td>
                 <button  th:attr="hx-get=@{/companys/edit/{id}(id=${company.companyId})}"   hx-target="#companyForm" hx-swap="innerHTML">Edit</button>
-                <button  th:attr="hx-delete=@{/htmx/delete/{id}(id=${company.companyId})}"  hx-target="#companyList" hx-swap="outerHTML">Delete</button>
+                <button  th:attr="hx-delete=@{/companys/delete/{id}(id=${company.companyId})}"  hx-target="#companyList" hx-swap="outerHTML">Delete</button>
             </td>
         </tr>
         </tbody>
