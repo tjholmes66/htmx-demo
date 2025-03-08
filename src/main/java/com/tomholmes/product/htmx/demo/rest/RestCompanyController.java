@@ -2,6 +2,7 @@ package com.tomholmes.product.htmx.demo.rest;
 
 import java.util.List;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,7 +14,8 @@ import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.service.CompanyService;
 
 @RestController
-@RequestMapping("/companys")
+@RequestMapping("/rest/companys")
+@CrossOrigin(origins = "*")
 public class RestCompanyController
 {
     private final CompanyService companyService;

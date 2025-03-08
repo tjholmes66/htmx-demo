@@ -15,7 +15,7 @@ import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.service.CompanyService;
 
 @Controller
-@RequestMapping("/companys")
+@RequestMapping("/htmx/companys")
 public class HtmxCompanyController
 {
 
