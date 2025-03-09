@@ -9,6 +9,7 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.tomholmes.product.htmx.demo.HtmxDemoApplication;
+import com.tomholmes.product.htmx.demo.dto.LoginDTO;
 import com.tomholmes.product.htmx.demo.model.UserEntity;
 
 @SpringBootTest(classes = HtmxDemoApplication.class)
@@ -26,6 +27,24 @@ public class LoginServiceImplTest
         String password = "demo";
         // ==================================================
         UserEntity user = service.login(username, password);
+        assertNotNull(user);
+        // ==================================================
+        if (user != null)
+        {
+            System.out.println("users=" + user.toString());
+        }
+    }
+
+    @Test
+    public void testFetchByLoginByDto() throws Exception
+    {
+        String username = "demo";
+        String password = "demo";
+        LoginDTO loginDto = new LoginDTO();
+        loginDto.setUsername(username);
+        loginDto.setPassword(password);
+        // ==================================================
+        UserEntity user = service.login(loginDto);
         assertNotNull(user);
         // ==================================================
         if (user != null)
