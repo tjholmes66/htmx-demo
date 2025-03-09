@@ -226,7 +226,6 @@ public class UserRepositoryTest extends BaseRepositoryTests
     }
     */
 
-    /*
     @Test
     public void testUserRetrieveByUsernamePassword()
     {
@@ -235,13 +234,10 @@ public class UserRepositoryTest extends BaseRepositoryTests
         int id = 1;
         String username = "demo";
         String password = "demo";
-        UserEntity exampleEntity = new UserEntity();
-        exampleEntity.setUsername(username);
-        exampleEntity.setPassword(password);
         // =================================================================================
         // ***************************************************************
         System.out.println("testUserRetrieveByUsernamePassword: START: CREATE");
-        List<UserEntity> users = userRepository.getUserEntityByLogin(username, password);
+        List<UserEntity> users = userRepository.findUserByUsernameAndPassword(username, password);
         assertNotNull(users);
         assertEquals(1, users.size());
         UserEntity user = users.get(0);
@@ -257,7 +253,6 @@ public class UserRepositoryTest extends BaseRepositoryTests
         System.out.println("testUserRetrieveByExample: FINISH: CREATE");
         // =================================================================================
     }
-    */
 
     // @Test
     public void testUserDelete()
