@@ -55,7 +55,7 @@ public class PhoneTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testPhoneTypeUpdate: START: CREATE");
         phoneType = phoneTypeRepository.save(phoneType);
         assertNotNull(phoneType);
-        assertEquals(phoneActive, phoneType.isActive());
+        assertEquals(phoneActive, phoneType.getActive());
         assertEquals(phoneTypeDescription, phoneType.getDescription());
         System.out.println("testPhoneTypeUpdate: FINISH: CREATE");
         // =================================================================================
@@ -74,9 +74,9 @@ public class PhoneTypeRepositoryTest extends BaseRepositoryTests
         for (PhoneTypeEntity phoneType : phoneTypes)
         {
             assertNotNull(phoneType.getId());
-            assertNotNull(phoneType.isActive());
+            assertNotNull(phoneType.getActive());
             assertNotNull(phoneType.getDescription());
-            System.out.println("testPhoneTypeRetrieve: phoneType=" + phoneType.getId() + " " + phoneType.isActive() + " " + phoneType.getDescription());
+            System.out.println("testPhoneTypeRetrieve: phoneType=" + phoneType.getId() + " " + phoneType.getActive() + " " + phoneType.getDescription());
         }
         System.out.println("testPhoneTypeRetrieve: FINISH: CREATE");
         // =================================================================================
@@ -92,9 +92,9 @@ public class PhoneTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testPhoneTypeRetrieveById: START: CREATE");
         PhoneTypeEntity phoneType = phoneTypeRepository.findById(1L).orElse(null);
         assertNotNull(phoneType.getId());
-        assertNotNull(phoneType.isActive());
+        assertNotNull(phoneType.getActive());
         assertNotNull(phoneType.getDescription());
-        System.out.println("testPhoneTypeRetrieveById: phoneType=" + phoneType.getId() + " " + phoneType.isActive() + " " + phoneType.getDescription());
+        System.out.println("testPhoneTypeRetrieveById: phoneType=" + phoneType.getId() + " " + phoneType.getActive() + " " + phoneType.getDescription());
         System.out.println("testPhoneTypeRetrieveById: FINISH: CREATE");
         // =================================================================================
     }

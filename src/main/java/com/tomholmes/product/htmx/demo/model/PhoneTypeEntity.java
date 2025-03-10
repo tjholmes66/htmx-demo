@@ -45,6 +45,6 @@ public class PhoneTypeEntity implements Serializable
     private String description;
 
     @Column(name = "phone_type_active")
-    private boolean active;
+    private Boolean active;
 
 }

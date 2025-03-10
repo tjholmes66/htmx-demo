@@ -122,7 +122,7 @@ public class ContactServiceImplTest
     public void testFetchByUserExample() throws Exception
     {
         UserEntity dummy = new UserEntity();
-        dummy.setUserId(2);
+        dummy.setUserId(2L);
         // ==================================================
         List<ContactEntity> contacts = null; // service.fetch(dummy);
         ContactEntity contact = null;

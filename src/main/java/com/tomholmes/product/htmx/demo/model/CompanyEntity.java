@@ -48,7 +48,7 @@ public class CompanyEntity implements Serializable
 
     // `active` tinyint(1) NOT NULL,
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
     // `code` varchar(10) NOT NULL,
     @Column(name = "code")

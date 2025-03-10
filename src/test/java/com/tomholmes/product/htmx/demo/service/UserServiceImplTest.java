@@ -36,9 +36,9 @@ public class UserServiceImplTest
         System.out.println("tearDown: context set null.");
     }
 
-    private final static int id = 0;
+    private final static Long id = 0L;
     private final static String email = "tom@tomholmes.new";
-    private final static int positionId = 2;
+    private final static Long positionId = 2L;
     private final static String firstname = "tom_new";
     private final static String lastname = "holmes_new";
     private final static String username = "user1new";
@@ -103,7 +103,7 @@ public class UserServiceImplTest
         long userId = 6;
         // ==================================================
         String email = "tom@tomholmes.upd";
-        int positionId = 2;
+        Long positionId = 2L;
         String firstname = "tom_upd";
         String lastname = "holmes_upd";
         String username = "user1upd";

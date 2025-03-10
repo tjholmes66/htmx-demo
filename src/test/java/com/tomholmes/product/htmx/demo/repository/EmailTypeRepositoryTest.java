@@ -55,7 +55,7 @@ public class EmailTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testEmailTypeUpdate: START: CREATE");
         emailType = emailTypeRepository.save(emailType);
         assertNotNull(emailType);
-        assertEquals(emailActive, emailType.isActive());
+        assertEquals(emailActive, emailType.getActive());
         assertEquals(emailTypeDescription, emailType.getDescription());
         System.out.println("testEmailTypeUpdate: FINISH: CREATE");
         // =================================================================================
@@ -74,9 +74,9 @@ public class EmailTypeRepositoryTest extends BaseRepositoryTests
         for (EmailTypeEntity emailType : emailTypes)
         {
             assertNotNull(emailType.getId());
-            assertNotNull(emailType.isActive());
+            assertNotNull(emailType.getActive());
             assertNotNull(emailType.getDescription());
-            System.out.println("testEmailTypeRetrieve: emailType=" + emailType.getId() + " " + emailType.isActive() + " " + emailType.getDescription());
+            System.out.println("testEmailTypeRetrieve: emailType=" + emailType.getId() + " " + emailType.getActive() + " " + emailType.getDescription());
         }
         System.out.println("testEmailTypeRetrieve: FINISH: CREATE");
         // =================================================================================
@@ -92,9 +92,9 @@ public class EmailTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testEmailTypeRetrieveById: START: CREATE");
         EmailTypeEntity emailType = emailTypeRepository.findById(1L).orElse(null);
         assertNotNull(emailType.getId());
-        assertNotNull(emailType.isActive());
+        assertNotNull(emailType.getActive());
         assertNotNull(emailType.getDescription());
-        System.out.println("testEmailTypeRetrieveById: emailType=" + emailType.getId() + " " + emailType.isActive() + " " + emailType.getDescription());
+        System.out.println("testEmailTypeRetrieveById: emailType=" + emailType.getId() + " " + emailType.getActive() + " " + emailType.getDescription());
         System.out.println("testEmailTypeRetrieveById: FINISH: CREATE");
         // =================================================================================
     }

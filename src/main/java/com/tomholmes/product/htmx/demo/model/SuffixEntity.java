@@ -25,10 +25,10 @@ public class SuffixEntity
 
     // `dict_suffix_name` varchar(45) NOT NULL,
     @Column(name = "dict_suffix_name")
-    private boolean suffixName;
+    private Boolean suffixName;
 
     // `dict_suffix_active` tinyint(1) NOT NULL DEFAULT '1',
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
 }

@@ -45,6 +45,6 @@ public class LinkTypeEntity implements Serializable
     private String description;
 
     @Column(name = "link_type_active")
-    private boolean active;
+    private Boolean active;
 
 }

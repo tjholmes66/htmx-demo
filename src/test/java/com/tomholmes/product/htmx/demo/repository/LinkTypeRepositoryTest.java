@@ -55,7 +55,7 @@ public class LinkTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testLinkTypeUpdate: START: CREATE");
         linkType = linkTypeRepository.save(linkType);
         assertNotNull(linkType);
-        assertEquals(linkActive, linkType.isActive());
+        assertEquals(linkActive, linkType.getActive());
         assertEquals(linkTypeDescription, linkType.getDescription());
         System.out.println("testLinkTypeUpdate: FINISH: CREATE");
         // =================================================================================
@@ -74,9 +74,9 @@ public class LinkTypeRepositoryTest extends BaseRepositoryTests
         for (LinkTypeEntity linkType : linkTypes)
         {
             assertNotNull(linkType.getId());
-            assertNotNull(linkType.isActive());
+            assertNotNull(linkType.getActive());
             assertNotNull(linkType.getDescription());
-            System.out.println("testLinkTypeRetrieve: linkType=" + linkType.getId() + " " + linkType.isActive() + " " + linkType.getDescription());
+            System.out.println("testLinkTypeRetrieve: linkType=" + linkType.getId() + " " + linkType.getActive() + " " + linkType.getDescription());
         }
         System.out.println("testLinkTypeRetrieve: FINISH: CREATE");
         // =================================================================================
@@ -92,9 +92,9 @@ public class LinkTypeRepositoryTest extends BaseRepositoryTests
         System.out.println("testLinkTypeRetrieveById: START: CREATE");
         LinkTypeEntity linkType = linkTypeRepository.findById(1L).orElse(null);
         assertNotNull(linkType.getId());
-        assertNotNull(linkType.isActive());
+        assertNotNull(linkType.getActive());
         assertNotNull(linkType.getDescription());
-        System.out.println("testLinkTypeRetrieveById: linkType=" + linkType.getId() + " " + linkType.isActive() + " " + linkType.getDescription());
+        System.out.println("testLinkTypeRetrieveById: linkType=" + linkType.getId() + " " + linkType.getActive() + " " + linkType.getDescription());
         System.out.println("testLinkTypeRetrieveById: FINISH: CREATE");
         // =================================================================================
     }

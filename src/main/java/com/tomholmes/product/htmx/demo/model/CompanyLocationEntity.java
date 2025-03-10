@@ -48,7 +48,7 @@ public class CompanyLocationEntity implements Serializable
 
     // `active` tinyint(1) NOT NULL DEFAULT '1',
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
     // `company_id` int NOT NULL,
     @ManyToOne(fetch = FetchType.EAGER)

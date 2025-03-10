@@ -43,7 +43,7 @@ public class PositionEntity implements Serializable
     private long Id;
 
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
     @Column(name = "code")
     private String code;

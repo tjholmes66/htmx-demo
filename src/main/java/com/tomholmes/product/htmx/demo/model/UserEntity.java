@@ -59,7 +59,7 @@ public class UserEntity implements Serializable
 
 // `active` tinyint(1) NOT NULL DEFAULT '1',
     @Column(name = "active")
-    private boolean active;
+    private Boolean active;
 
 // `position_id` int(11) NOT NULL DEFAULT '2',
 // bi-directional many-to-one association to ContactEntity

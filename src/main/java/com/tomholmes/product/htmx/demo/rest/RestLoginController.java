@@ -1,5 +1,6 @@
 package com.tomholmes.product.htmx.demo.rest;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,6 +12,7 @@ import com.tomholmes.product.htmx.demo.service.LoginService;
 
 @RestController
 @RequestMapping("/rest/login")
+@CrossOrigin(origins = "*")
 public class RestLoginController
 {
 
@@ -27,7 +29,7 @@ public class RestLoginController
         System.out.println("RestLoginController: login: loginDto=" + loginDto);
         UserEntity userEntity = service.login(loginDto);
         System.out.println("RestLoginController: login: user=" + userEntity);
-        return userEntity;
+        return (userEntity == null ? new UserEntity() : userEntity);
     }
 
 }

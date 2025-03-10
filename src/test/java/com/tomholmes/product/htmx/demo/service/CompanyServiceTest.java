@@ -31,6 +31,7 @@ public class CompanyServiceTest
     public void testAdd()
     {
         long id = 0;
+        Boolean active = true;
         String address1 = "123 Main Street";
         String city = "Boston";
         String companyCode = "code";
@@ -47,6 +48,7 @@ public class CompanyServiceTest
         companyEntity.setDescription(description);
         companyEntity.setState(state);
         companyEntity.setZip(zip);
+        companyEntity.setActive(active);
 
         CompanyEntity newCompany = service.add(companyEntity);
         assertNotNull(newCompany);
@@ -60,6 +62,7 @@ public class CompanyServiceTest
     public void testCeateNewCompany()
     {
         long id = 0;
+        Boolean active = true;
         String address1 = "123 Main Street";
         String city = "Boston";
         String companyCode = "code";
@@ -76,12 +79,14 @@ public class CompanyServiceTest
         companyEntity.setDescription(description);
         companyEntity.setState(state);
         companyEntity.setZip(zip);
+        companyEntity.setActive(active);
 
         CompanyEntity newCompany = service.add(companyEntity);
         assertNotNull(newCompany);
         assertEquals(true, newCompany.getCompanyId() > 1);
         assertNotEquals(0, newCompany.getCompanyId());
         assertEquals(city, newCompany.getCity());
+        assertEquals(active, newCompany.getActive());
     }
 
     // RETRIEVE ================================================================================

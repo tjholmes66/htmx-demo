@@ -33,7 +33,7 @@ public class UserServiceImpl implements UserService
     @Override
     public UserEntity add(UserEntity newUser)
     {
-        UserEntity userEntity = userDao.save(newUser);
+        UserEntity userEntity = userDao.saveAndFlush(newUser);
         return userEntity;
     }
 

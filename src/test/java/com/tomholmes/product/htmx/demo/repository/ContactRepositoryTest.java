@@ -126,19 +126,19 @@ public class ContactRepositoryTest extends BaseRepositoryTests
     {
         System.out.println("testContactFetchByUser: START");
         UserEntity user = new UserEntity();
-        user.setUserId(1);
+        user.setUserId(1L);
 
         List<ContactEntity> contactList = contactRepository.findByUser(user);
         assertNotNull(contactList);
         assertEquals(1, contactList.size());
 
         user = new UserEntity();
-        user.setUserId(2);
+        user.setUserId(2L);
         contactList = contactRepository.findByUser(user);
         assertEquals(2, contactList.size());
 
         user = new UserEntity();
-        user.setUserId(3);
+        user.setUserId(3L);
         contactList = contactRepository.findByUser(user);
         assertEquals(2, contactList.size());
 

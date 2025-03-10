@@ -44,6 +44,6 @@ public class EmailTypeEntity implements Serializable
     private String description;
 
     @Column(name = "email_type_active")
-    private boolean active;
+    private Boolean active;
 
 }
