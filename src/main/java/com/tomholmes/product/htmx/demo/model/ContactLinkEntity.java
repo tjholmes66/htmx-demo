@@ -1,7 +1,7 @@
 package com.tomholmes.product.htmx.demo.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -72,6 +72,6 @@ public class ContactLinkEntity implements Serializable
     private String linkDescription;
 
     @Column(name = "entered_date")
-    private Date enteredDate;
+    private LocalDateTime enteredDate;
 
 }

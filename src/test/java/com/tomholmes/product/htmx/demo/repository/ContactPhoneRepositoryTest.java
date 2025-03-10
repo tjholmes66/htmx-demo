@@ -3,7 +3,8 @@ package com.tomholmes.product.htmx.demo.repository;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
-import java.util.Date;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import org.junit.jupiter.api.Test;
@@ -26,7 +27,7 @@ public class ContactPhoneRepositoryTest extends BaseRepositoryTests
     private String address2 = "Apt. 456";
     private boolean admin = false;
     private String dob = "11/03/1966";
-    private Date birthDate = null;
+    private LocalDate birthDate = null;
     private String city = "Randolph";
     private long companyId = 0;
     private String firstName = "first_name";
@@ -80,7 +81,7 @@ public class ContactPhoneRepositoryTest extends BaseRepositoryTests
         // contactPhone.setId(id);
         contactPhone.setContact(contact);
         contactPhone.setPhone(phoneNew);
-        contactPhone.setEnteredDate(new Date());
+        contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhoneType(phoneType);
         System.out.println("testCreate: " + contactPhone.toString());
         // ***************************************************************

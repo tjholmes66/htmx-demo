@@ -1,7 +1,7 @@
 package com.tomholmes.product.htmx.demo.model;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -45,6 +45,6 @@ public class ContactEmailEntity implements Serializable
     private String email;
 
     @Column(name = "entered_date")
-    private Date enteredDate;
+    private LocalDateTime enteredDate;
 
 }

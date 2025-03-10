@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
@@ -53,7 +53,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email1);
-        contactEmail.setEnteredDate(new Date());
+        contactEmail.setEnteredDate(LocalDateTime.now());
         contactEmail.setEmailType(emailType1);
         emails.add(contactEmail);
         // **********************************************
@@ -63,7 +63,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email2);
-        contactEmail.setEnteredDate(new Date());
+        contactEmail.setEnteredDate(LocalDateTime.now());
         contactEmail.setEmailType(emailType2);
         emails.add(contactEmail);
         // **********************************************
@@ -73,7 +73,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email3);
-        contactEmail.setEnteredDate(new Date());
+        contactEmail.setEnteredDate(LocalDateTime.now());
         contactEmail.setEmailType(emailType3);
         emails.add(contactEmail);
         // ============================================================
@@ -91,7 +91,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         phoneType1.setId(1);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
-        contactPhone.setEnteredDate(new Date());
+        contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("111-111-1111");
         contactPhone.setPhoneId(0);
         contactPhone.setPhoneType(phoneType1);
@@ -101,7 +101,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         phoneType2.setId(2);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
-        contactPhone.setEnteredDate(new Date());
+        contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("222-222-2222");
         contactPhone.setPhoneId(0);
         contactPhone.setPhoneType(phoneType2);
@@ -111,7 +111,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         phoneType3.setId(3);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
-        contactPhone.setEnteredDate(new Date());
+        contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("333-333-3333");
         contactPhone.setPhoneId(0);
         contactPhone.setPhoneType(phoneType3);
