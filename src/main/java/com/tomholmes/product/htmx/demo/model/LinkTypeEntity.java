@@ -39,7 +39,7 @@ public class LinkTypeEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "link_type_id")
-    private long id;
+    private Long id;
 
     @Column(name = "link_type_description")
     private String description;

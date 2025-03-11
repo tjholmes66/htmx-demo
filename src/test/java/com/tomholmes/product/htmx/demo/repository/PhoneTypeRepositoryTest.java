@@ -25,7 +25,7 @@ public class PhoneTypeRepositoryTest extends BaseRepositoryTests
         String phoneTypeDescription = "Test Description";
         // =================================================================================
         PhoneTypeEntity phoneType = new PhoneTypeEntity();
-        phoneType.setId(0);
+        phoneType.setId(1L);
         phoneType.setActive(phoneActive);
         phoneType.setDescription(phoneTypeDescription);
         System.out.println("testPhoneTypeSave: " + phoneTypeName + " " + phoneTypeDescription);
@@ -47,7 +47,7 @@ public class PhoneTypeRepositoryTest extends BaseRepositoryTests
         String phoneTypeDescription = "Test Description Update";
         // =================================================================================
         PhoneTypeEntity phoneType = new PhoneTypeEntity();
-        phoneType.setId(0);
+        phoneType.setId(1L);
         phoneType.setActive(phoneActive);
         phoneType.setDescription(phoneTypeDescription);
         System.out.println("testPhoneTypeUpdate: " + phoneTypeName + " " + phoneTypeDescription);

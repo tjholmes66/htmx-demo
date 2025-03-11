@@ -51,17 +51,17 @@ public class ContactPhoneRepositoryTest extends BaseRepositoryTests
         System.out.println("testContactPhoneFetchByContact: START");
         // ==========================================================================
         ContactEntity contact = new ContactEntity();
-        contact.setContactId(5);
+        contact.setContactId(5L);
         List<ContactPhoneEntity> contactPhoneList = contactPhoneRepository.findByContact(contact);
         assertEquals(3, contactPhoneList.size());
         // ==========================================================================
         contact = new ContactEntity();
-        contact.setContactId(1);
+        contact.setContactId(1L);
         contactPhoneList = contactPhoneRepository.findByContact(contact);
         assertEquals(0, contactPhoneList.size());
         // ==========================================================================
         contact = new ContactEntity();
-        contact.setContactId(11); // id does not exist
+        contact.setContactId(11L); // id does not exist
         contactPhoneList = contactPhoneRepository.findByContact(contact);
         assertEquals(0, contactPhoneList.size());
         // ==========================================================================

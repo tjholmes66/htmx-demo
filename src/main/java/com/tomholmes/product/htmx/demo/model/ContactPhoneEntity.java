@@ -35,7 +35,7 @@ public class ContactPhoneEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contacts_phone_id")
-    private long phoneId;
+    private Long phoneId;
 
     // bi-directional many-to-one association to ContactEntity
     @ManyToOne(fetch = FetchType.EAGER)

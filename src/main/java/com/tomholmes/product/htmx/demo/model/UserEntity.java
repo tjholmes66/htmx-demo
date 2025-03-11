@@ -55,7 +55,7 @@ public class UserEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
-    private long userId;
+    private Long userId;
 
 // `active` tinyint(1) NOT NULL DEFAULT '1',
     @Column(name = "active")

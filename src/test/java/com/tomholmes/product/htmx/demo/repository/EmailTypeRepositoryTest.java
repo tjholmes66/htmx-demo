@@ -25,7 +25,7 @@ public class EmailTypeRepositoryTest extends BaseRepositoryTests
         String emailTypeDescription = "Test Description";
         // =================================================================================
         EmailTypeEntity emailType = new EmailTypeEntity();
-        emailType.setId(0);
+        emailType.setId(1L);
         emailType.setActive(emailActive);
         emailType.setDescription(emailTypeDescription);
         System.out.println("testEmailTypeSave: " + emailTypeName + " " + emailTypeDescription);
@@ -47,7 +47,7 @@ public class EmailTypeRepositoryTest extends BaseRepositoryTests
         String emailTypeDescription = "Test Description Update";
         // =================================================================================
         EmailTypeEntity emailType = new EmailTypeEntity();
-        emailType.setId(0);
+        // emailType.setId(0L);
         emailType.setActive(emailActive);
         emailType.setDescription(emailTypeDescription);
         System.out.println("testEmailTypeUpdate: " + emailTypeName + " " + emailTypeDescription);

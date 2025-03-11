@@ -38,7 +38,7 @@ public class EmailTypeEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "email_type_id")
-    private long id;
+    private Long id;
 
     @Column(name = "email_type_description")
     private String description;

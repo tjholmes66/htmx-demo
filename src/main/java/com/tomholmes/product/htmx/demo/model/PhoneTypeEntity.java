@@ -39,7 +39,7 @@ public class PhoneTypeEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "phone_type_id")
-    private long id;
+    private Long id;
 
     @Column(name = "phone_type_description")
     private String description;

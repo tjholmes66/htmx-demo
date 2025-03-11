@@ -24,7 +24,7 @@ public class ContactServiceImplTest
     @Autowired
     private ContactService service;
 
-    private final static int id = 0;
+    private final static long id = 0;
     private final static String prefix = "Mr.";
     private final static String firstname = "Thomas";
     private final static String middlename = "Joseph";

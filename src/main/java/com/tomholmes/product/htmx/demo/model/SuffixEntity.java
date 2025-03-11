@@ -21,7 +21,7 @@ public class SuffixEntity
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "dict_suffix_id")
-    private long suffixId;
+    private Long suffixId;
 
     // `dict_suffix_name` varchar(45) NOT NULL,
     @Column(name = "dict_suffix_name")

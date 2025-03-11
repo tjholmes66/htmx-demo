@@ -29,7 +29,7 @@ public class ContactEmailEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contacts_email_id")
-    private long emailId;
+    private Long emailId;
 
     // bi-directional many-to-one association to ContactEntity
     @ManyToOne(fetch = FetchType.EAGER)

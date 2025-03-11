@@ -59,7 +59,7 @@ public class ContactEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contact_id")
-    private long contactId;
+    private Long contactId;
 
     // bi-directional many-to-one association to UserEntity
     @ManyToOne(fetch = FetchType.EAGER)
@@ -107,11 +107,11 @@ public class ContactEntity implements Serializable
 
 // `company_id` int(11) DEFAULT NULL,
     @Column(name = "company_id")
-    private long companyId;
+    private Long companyId;
 
 // `entered_by` int(11) DEFAULT NULL,
     @Column(name = "entered_by")
-    private long enteredBy;
+    private Long enteredBy;
 
 // `entered_date` datetime DEFAULT NULL,
     @Column(name = "entered_date")
@@ -119,7 +119,7 @@ public class ContactEntity implements Serializable
 
 // `edited_by` int(11) DEFAULT NULL,
     @Column(name = "edited_by")
-    private long editedBy;
+    private Long editedBy;
 
 // `edited_date` datetime DEFAULT NULL,
     @Column(name = "edited_date")

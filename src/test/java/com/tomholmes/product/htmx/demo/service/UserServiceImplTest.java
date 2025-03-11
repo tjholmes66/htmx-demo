@@ -36,9 +36,9 @@ public class UserServiceImplTest
         System.out.println("tearDown: context set null.");
     }
 
-    private final static Long id = 0L;
+    private final static long id = 0;
     private final static String email = "tom@tomholmes.new";
-    private final static Long positionId = 2L;
+    private final static long positionId = 2;
     private final static String firstname = "tom_new";
     private final static String lastname = "holmes_new";
     private final static String username = "user1new";
@@ -51,7 +51,7 @@ public class UserServiceImplTest
     private UserEntity createUserEntity()
     {
         UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(id);
+        // userEntity.setUserId(id);
         userEntity.setActive(true);
         userEntity.setEmail(email);
         PositionEntity position = new PositionEntity();

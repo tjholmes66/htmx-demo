@@ -27,7 +27,7 @@ public class RestContactControllerTest
 {
     private final static String BASE_URL = "/rest/contacts";
 
-    private final static int contactId = 0;
+    private final static long contactId = 0;
     // =============================================
     private final static String prefix = "Mr.";
     private final static String firstName = "contact_fn1";
@@ -41,12 +41,12 @@ public class RestContactControllerTest
     private final static String state = "MA";
     private final static String zip = "02368-1234";
     // =============================================
-    private final static int editedBy = 1;
+    private final static long editedBy = 1;
     private final static LocalDateTime editedDate = LocalDateTime.now();
-    private final static int enteredBy = 1;
+    private final static long enteredBy = 1;
     private final static LocalDateTime enteredDate = LocalDateTime.now();
     // =============================================
-    private final static int companyId = 0;
+    private final static long companyId = 0;
     private final static LocalDate birthDate = LocalDate.now();
 
     @Autowired

@@ -1,6 +1,6 @@
 package com.tomholmes.product.htmx.demo.rest;
 
-import java.util.ArrayList;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -23,16 +23,16 @@ public class RestContactController
     private ContactService service;
 
     @RequestMapping(value = "", method = RequestMethod.GET, headers = "Accept=application/json")
-    public ArrayList<ContactEntity> getContactList1()
+    public List<ContactEntity> getContactList1()
     {
-        ArrayList<ContactEntity> contactEntityList = (ArrayList) service.getAllContacts();
+        List<ContactEntity> contactEntityList = service.getAllContacts();
         return contactEntityList;
     }
 
     @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
-    public @ResponseBody ArrayList<ContactEntity> getContactList2()
+    public @ResponseBody List<ContactEntity> getContactList2()
     {
-        ArrayList<ContactEntity> contactEntityList = (ArrayList) service.getAllContacts();
+        List<ContactEntity> contactEntityList = service.getAllContacts();
         return contactEntityList;
     }
 
@@ -45,9 +45,9 @@ public class RestContactController
     }
 
     @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    public @ResponseBody ArrayList<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)
+    public @ResponseBody List<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)
     {
-        ArrayList<ContactEntity> contactEntityList = (ArrayList) service.getContactsByUserId(userId);
+        List<ContactEntity> contactEntityList = service.getContactsByUserId(userId);
         return contactEntityList;
     }
 

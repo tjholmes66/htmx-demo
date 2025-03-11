@@ -25,7 +25,7 @@ public class LinkTypeRepositoryTest extends BaseRepositoryTests
         String linkTypeDescription = "Test Description";
         // =================================================================================
         LinkTypeEntity linkType = new LinkTypeEntity();
-        linkType.setId(0);
+        linkType.setId(1L);
         linkType.setActive(linkActive);
         linkType.setDescription(linkTypeDescription);
         System.out.println("testLinkTypeSave: " + linkTypeName + " " + linkTypeDescription);
@@ -47,7 +47,7 @@ public class LinkTypeRepositoryTest extends BaseRepositoryTests
         String linkTypeDescription = "Test Description Update";
         // =================================================================================
         LinkTypeEntity linkType = new LinkTypeEntity();
-        linkType.setId(0);
+        linkType.setId(1L);
         linkType.setActive(linkActive);
         linkType.setDescription(linkTypeDescription);
         System.out.println("testLinkTypeUpdate: " + linkTypeName + " " + linkTypeDescription);

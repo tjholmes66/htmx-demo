@@ -23,6 +23,9 @@ public class ContactRepositoryTest extends BaseRepositoryTests
     @Autowired
     private ContactRepository contactRepository; // repository
 
+    @Autowired
+    private UserRepository userRepository; // repository
+
     private long _id = 2;
     private boolean _active = true;
     private String _address1 = "123 main street";
@@ -49,7 +52,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         // ============================================================
         String email1 = "tom1@tomholmes1.net";
         EmailTypeEntity emailType1 = new EmailTypeEntity();
-        emailType1.setId(1);
+        emailType1.setId(1L);
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email1);
@@ -59,7 +62,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         // **********************************************
         String email2 = "tom2@tomholmes2.net";
         EmailTypeEntity emailType2 = new EmailTypeEntity();
-        emailType2.setId(2);
+        emailType2.setId(2L);
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email2);
@@ -69,7 +72,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         // **********************************************
         String email3 = "tom3@tomholmes3.net";
         EmailTypeEntity emailType3 = new EmailTypeEntity();
-        emailType3.setId(3);
+        emailType3.setId(3L);
         contactEmail = new ContactEmailEntity();
         contactEmail.setContact(contact);
         contactEmail.setEmail(email3);
@@ -88,32 +91,32 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         ContactPhoneEntity contactPhone = null;
         // ============================================================
         PhoneTypeEntity phoneType1 = new PhoneTypeEntity();
-        phoneType1.setId(1);
+        phoneType1.setId(1L);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
         contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("111-111-1111");
-        contactPhone.setPhoneId(0);
+        contactPhone.setPhoneId(0L);
         contactPhone.setPhoneType(phoneType1);
         phones.add(contactPhone);
         // ============================================================
         PhoneTypeEntity phoneType2 = new PhoneTypeEntity();
-        phoneType2.setId(2);
+        phoneType2.setId(2L);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
         contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("222-222-2222");
-        contactPhone.setPhoneId(0);
+        contactPhone.setPhoneId(0L);
         contactPhone.setPhoneType(phoneType2);
         phones.add(contactPhone);
         // ============================================================
         PhoneTypeEntity phoneType3 = new PhoneTypeEntity();
-        phoneType3.setId(3);
+        phoneType3.setId(3L);
         contactPhone = new ContactPhoneEntity();
         contactPhone.setContact(contactEntity);
         contactPhone.setEnteredDate(LocalDateTime.now());
         contactPhone.setPhone("333-333-3333");
-        contactPhone.setPhoneId(0);
+        contactPhone.setPhoneId(0L);
         contactPhone.setPhoneType(phoneType3);
         phones.add(contactPhone);
         // ============================================================
@@ -151,7 +154,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         System.out.println("testContactCreate: START");
         // =================================================================================
         ContactEntity contact = new ContactEntity();
-        contact.setContactId(0);
+        // contact.setContactId(0L);
         contact.setAddress1(_address1);
         contact.setAddress2(_address2);
         contact.setBirthDate(_birthDate);
@@ -165,8 +168,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contact.setZip(_zip);
         // ***************************************************************
         long userId = 1;
-        UserEntity userEntity = new UserEntity();
-        userEntity.setUserId(userId);
+        UserEntity userEntity = userRepository.findById(userId).orElse(null);
         contact.setUser(userEntity);
         // ***************************************************************
         // contact.setEmails(createEmails(contact));
@@ -175,7 +177,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         System.out.println("testContactCreate: " + contact.toString());
         // ***************************************************************
         System.out.println("testContactCreate: START: CREATE");
-        contact = contactRepository.save(contact);
+        contact = contactRepository.saveAndFlush(contact);
         assertNotNull(contact);
         System.out.println("testContactCreate: FINISH: CREATE");
         // =================================================================================

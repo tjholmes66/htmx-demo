@@ -44,7 +44,7 @@ public class CompanyEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "company_id")
-    private long companyId;
+    private Long companyId;
 
     // `active` tinyint(1) NOT NULL,
     @Column(name = "active")

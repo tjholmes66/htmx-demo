@@ -2,7 +2,6 @@ package com.tomholmes.product.htmx.demo.service;
 
 import java.util.List;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -13,8 +12,12 @@ import com.tomholmes.product.htmx.demo.repository.UserRepository;
 @Service("userService")
 public class UserServiceImpl implements UserService
 {
-    @Autowired
     private UserRepository userDao;
+
+    public UserServiceImpl(UserRepository userDao)
+    {
+        this.userDao = userDao;
+    }
 
     @Override
     public List<UserEntity> getAllUsers()
@@ -33,7 +36,7 @@ public class UserServiceImpl implements UserService
     @Override
     public UserEntity add(UserEntity newUser)
     {
-        UserEntity userEntity = userDao.saveAndFlush(newUser);
+        UserEntity userEntity = userDao.save(newUser);
         return userEntity;
     }
 

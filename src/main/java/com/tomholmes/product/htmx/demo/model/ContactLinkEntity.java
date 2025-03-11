@@ -53,7 +53,7 @@ public class ContactLinkEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "contacts_link_id")
-    private long linkId;
+    private Long linkId;
 
     // bi-directional many-to-one association to ContactEntity
     @ManyToOne(fetch = FetchType.EAGER)
