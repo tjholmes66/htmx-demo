@@ -149,6 +149,24 @@ public class ContactRepositoryTest extends BaseRepositoryTests
     }
 
     @Test
+    public void testContactFetchByUserId() throws Exception
+    {
+        System.out.println("testContactFetchByUserId: START");
+
+        List<ContactEntity> contactList = contactRepository.findByUserUserId(1L);
+        assertNotNull(contactList);
+        assertEquals(1, contactList.size());
+
+        contactList = contactRepository.findByUserUserId(2L);
+        assertEquals(2, contactList.size());
+
+        contactList = contactRepository.findByUserUserId(3L);
+        assertEquals(2, contactList.size());
+
+        System.out.println("testContactFetchByUser: FINISH");
+    }
+
+    @Test
     public void testContactCreate() throws Exception
     {
         System.out.println("testContactCreate: START");

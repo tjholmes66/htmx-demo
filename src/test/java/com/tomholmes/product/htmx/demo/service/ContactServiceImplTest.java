@@ -1,5 +1,6 @@
 package com.tomholmes.product.htmx.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
@@ -78,80 +79,35 @@ public class ContactServiceImplTest
         return contactEntity;
     }
 
-    // @Test
-    /*
-    public void testCreateContact() throws Exception
-    {
-        ContactEntity contactEntity = createContactEntity();
-        // ==================================================
-        ContactEntity newContactDto = null; // service.add(contactDto);
-        assertNotNull(newContactDto);
-        // ==================================================
-    }
-    */
-
+    // public List<ContactEntity> getAllContacts()
     @Test
-    public void testFetchAll() throws Exception
-    {
-        ContactEntity dummy = new ContactEntity();
-        dummy.setFirstName("test_description");
-        // ==================================================
-        List<ContactEntity> contactEntityList = service.getAllContacts();
-        System.out.println("contacts: count=" + contactEntityList.size());
-        assertNotNull(contactEntityList);
-        // ==================================================
-    }
+    public void testGetAllContacts() {
+        List<ContactEntity> contacts = service.getAllContacts();
+}
 
-    // @Test
-    public void testFetchByExample() throws Exception
-    {
-        ContactEntity dummy = new ContactEntity();
-        dummy.setCity(city);
-        // ==================================================
-        List<ContactEntity> contacts = null; // service.fetch(dummy);
-        ContactEntity contact = contacts.get(0);
-        System.out.println("testFetchByExample: contacts: id=" + contact.getContactId());
-        System.out.println("testFetchByExample: contacts: firstname=" + contact.getFirstName());
-        System.out.println("testFetchByExample: contacts: lastname=" + contact.getLastName());
-        System.out.println("testFetchByExample: contacts=" + contact.toString());
-        assertNotNull(contact);
-        // ==================================================
-    }
-
-    // @Test
-    public void testFetchByUserExample() throws Exception
-    {
-        UserEntity dummy = new UserEntity();
-        dummy.setUserId(2L);
-        // ==================================================
-        List<ContactEntity> contacts = null; // service.fetch(dummy);
-        ContactEntity contact = null;
-        if (contacts != null)
-        {
-            System.out.println("testFetchByUserExample: contacts: size=" + contacts.size());
-            System.out.println("testFetchByUserExample: contacts=" + contacts.toString());
-            contact = contacts.get(0);
-            System.out.println("testFetchByUserExample: contacts: id=" + contact.getContactId());
-            System.out.println("testFetchByUserExample: contacts: firstname=" + contact.getFirstName());
-            System.out.println("testFetchByUserExample: contacts: lastname=" + contact.getLastName());
-            System.out.println("testFetchByUserExample: contacts=" + contact.toString());
-        }
-        assertNotNull(contact);
-        // ==================================================
-    }
-
+    // public List<ContactEntity> getContactsByUserId(long userId)
     @Test
-    public void testFetchById() throws Exception
-    {
-        long contactId = 2;
-        // ==================================================
-        ContactEntity contact = service.getContactById(contactId);
-        System.out.println("contacts: id=" + contact.getContactId());
-        System.out.println("contacts: firstname=" + contact.getFirstName());
-        System.out.println("contacts: lastname=" + contact.getLastName());
-        System.out.println("contacts=" + contact.toString());
-        assertNotNull(contact);
-        // ==================================================
+    public void testGetContactsByUserId() {
+        long userId = 1;
+        List<ContactEntity> contacts = service.getContactsByUserId(userId);
+        assertEquals(1, contacts.size());
+
+        userId = 2;
+        contacts = service.getContactsByUserId(userId);
+        assertEquals(2, contacts.size());
+
+        userId = 3;
+        contacts = service.getContactsByUserId(userId);
+        assertEquals(2, contacts.size());
+
+        userId = 4;
+        contacts = service.getContactsByUserId(userId);
+        assertEquals(0, contacts.size());
     }
+
+    // public ContactEntity getContactById(long contactId)
+    // public ContactEntity add(ContactEntity newContact)
+    // public ContactEntity update(ContactEntity newContact)
+    // public void remove(long contactId)
 
 }

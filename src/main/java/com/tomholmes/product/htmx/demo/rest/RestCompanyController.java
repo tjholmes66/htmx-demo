@@ -2,13 +2,7 @@ package com.tomholmes.product.htmx.demo.rest;
 
 import java.util.List;
 
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.service.CompanyService;
@@ -25,21 +19,21 @@ public class RestCompanyController
         this.companyService = companyService;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "", headers = "Accept=application/json")
     public List<CompanyEntity> getCompanyList1()
     {
         List<CompanyEntity> companyEntityList = companyService.getAllCompanys();
         return companyEntityList;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "/", headers = "Accept=application/json")
     public @ResponseBody List<CompanyEntity> getCompanyList2()
     {
         List<CompanyEntity> companyEntityList = companyService.getAllCompanys();
         return companyEntityList;
     }
 
-    @RequestMapping(value = "/companyId/{companyId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "/companyId/{companyId}", headers = "Accept=application/json")
     public @ResponseBody CompanyEntity getCompanyById(@PathVariable("companyId") long companyId)
     {
         CompanyEntity companyEntity = companyService.getCompanyById(companyId);
@@ -47,7 +41,7 @@ public class RestCompanyController
         return companyEntity;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json", headers = "content-type=application/json")
+    @PostMapping(value = "/create", produces = "application/json", headers = "content-type=application/json")
     public @ResponseBody CompanyEntity createCompany(@RequestBody CompanyEntity company)
     {
         System.out.println("CompanyController: createCompany: company=" + company);
@@ -55,7 +49,7 @@ public class RestCompanyController
         return companyEntity;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json", headers = "content-type=application/json")
+    @PutMapping(value = "/update", produces = "application/json", headers = "content-type=application/json")
     public @ResponseBody CompanyEntity updateCompany(@RequestBody CompanyEntity company)
     {
         System.out.println("CompanyController: START: updateCompany: company=" + company);
@@ -64,7 +58,7 @@ public class RestCompanyController
         return companyEntity;
     }
 
-    @RequestMapping(value = "/delete/{companyId}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @DeleteMapping(value = "/delete/{companyId}", headers = "Accept=application/json")
     public @ResponseBody void deleteCompany(@PathVariable("companyId") long companyId)
     {
         System.out.println("CompanyController: START: deleteCompany: companyId=" + companyId);

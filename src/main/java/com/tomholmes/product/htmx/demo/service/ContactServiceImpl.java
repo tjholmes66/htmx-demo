@@ -23,7 +23,7 @@ public class ContactServiceImpl implements ContactService
     @Override
     public List<ContactEntity> getAllContacts()
     {
-        List<ContactEntity> contactList = (List<ContactEntity>) contactDao.findAll();
+        List<ContactEntity> contactList = contactDao.findAll();
         return contactList;
     }
 

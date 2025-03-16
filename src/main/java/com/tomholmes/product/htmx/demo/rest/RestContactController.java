@@ -3,13 +3,7 @@ package com.tomholmes.product.htmx.demo.rest;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.tomholmes.product.htmx.demo.model.ContactEntity;
 import com.tomholmes.product.htmx.demo.service.ContactService;
@@ -19,60 +13,63 @@ import com.tomholmes.product.htmx.demo.service.ContactService;
 @CrossOrigin(origins = "*")
 public class RestContactController
 {
-    @Autowired
-    private ContactService service;
+    private ContactService contactService;
 
-    @RequestMapping(value = "", method = RequestMethod.GET, headers = "Accept=application/json")
+    public RestContactController(ContactService contactService) {
+        this.contactService = contactService;
+    }
+
+    @GetMapping(value = "", headers = "Accept=application/json")
     public List<ContactEntity> getContactList1()
     {
-        List<ContactEntity> contactEntityList = service.getAllContacts();
+        List<ContactEntity> contactEntityList = contactService.getAllContacts();
         return contactEntityList;
     }
 
-    @RequestMapping(value = "/", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "/", headers = "Accept=application/json")
     public @ResponseBody List<ContactEntity> getContactList2()
     {
-        List<ContactEntity> contactEntityList = service.getAllContacts();
+        List<ContactEntity> contactEntityList = contactService.getAllContacts();
         return contactEntityList;
     }
 
-    @RequestMapping(value = "/contactId/{contactId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "/contactId/{contactId}", headers = "Accept=application/json")
     public @ResponseBody ContactEntity getContactById(@PathVariable("contactId") long contactId)
     {
-        ContactEntity contactEntity = service.getContactById(contactId);
+        ContactEntity contactEntity = contactService.getContactById(contactId);
         System.out.println("ContactController: retrieveContact: contactEntity=" + contactEntity);
         return contactEntity;
     }
 
-    @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET, headers = "Accept=application/json")
+    @GetMapping(value = "/userId/{userId}", headers = "Accept=application/json")
     public @ResponseBody List<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)
     {
-        List<ContactEntity> contactEntityList = service.getContactsByUserId(userId);
+        List<ContactEntity> contactEntityList = contactService.getContactsByUserId(userId);
         return contactEntityList;
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json", headers = "content-type=application/json")
+    @PostMapping(value = "/create", produces = "application/json", headers = "content-type=application/json")
     public @ResponseBody ContactEntity createContact(@RequestBody ContactEntity contact)
     {
         System.out.println("ContactController: createContact: contact=" + contact);
-        ContactEntity contactEntity = service.add(contact);
+        ContactEntity contactEntity = contactService.add(contact);
         return contactEntity;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json", headers = "content-type=application/json")
+    @PutMapping(value = "/update", produces = "application/json", headers = "content-type=application/json")
     public @ResponseBody ContactEntity updateContact(@RequestBody ContactEntity contact)
     {
         System.out.println("ContactController: START: updateContact: contact=" + contact);
-        ContactEntity contactEntity = service.update(contact);
+        ContactEntity contactEntity = contactService.update(contact);
         System.out.println("ContactController: FINISH: updateContact: contactEntity=" + contactEntity);
         return contactEntity;
     }
 
-    @RequestMapping(value = "/delete/{contactId}", method = RequestMethod.DELETE, headers = "Accept=application/json")
+    @DeleteMapping(value = "/delete/{contactId}",  headers = "Accept=application/json")
     public @ResponseBody void deleteContact(@PathVariable("contactId") long contactId)
     {
         System.out.println("ContactController: START: deleteContact: contactId=" + contactId);
-        service.remove(contactId);
+        contactService.remove(contactId);
         System.out.println("ContactController: FINISH: deleteContact:");
     }
 

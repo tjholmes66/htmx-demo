@@ -55,13 +55,13 @@ public class UserRepositoryTest extends BaseRepositoryTests
         // =================================================================================
         UserEntity user = new UserEntity();
         user.setActive(active);
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
         user.setPassword(password);
         user.setUsername(username);
         user.setPosition(position);
-        user.setFirstname(firstname);
-        user.setLastname(lastname);
+        user.setFirstName(firstname);
+        user.setLastName(lastname);
 
         user.setEmail(email);
         user.setSecurityQuestion1(securityQuestion1);
@@ -127,9 +127,9 @@ public class UserRepositoryTest extends BaseRepositoryTests
         assertNotNull(user.getUserId());
         // assertNotNull(user.isActive());
         // ************************************************************
-        assertEquals(user.getFirstname(), "Demo");
+        assertEquals(user.getFirstName(), "Demo");
         assertEquals(user.getUserId(), id);
-        assertEquals(user.getLastname(), "Demo");
+        assertEquals(user.getLastName(), "Demo");
         assertEquals(user.getPassword(), "demo");
         assertEquals(user.getUsername(), "demo");
 
@@ -243,9 +243,9 @@ public class UserRepositoryTest extends BaseRepositoryTests
         UserEntity user = users.get(0);
         assertNotNull(user.getUserId());
         // ************************************************************
-        assertEquals(user.getFirstname(), "Demo");
+        assertEquals(user.getFirstName(), "Demo");
         assertEquals(user.getUserId(), id);
-        assertEquals(user.getLastname(), "Demo");
+        assertEquals(user.getLastName(), "Demo");
         assertEquals(user.getPassword(), "demo");
         assertEquals(user.getUsername(), "demo");
         // ************************************************************
@@ -335,15 +335,15 @@ public class UserRepositoryTest extends BaseRepositoryTests
         String updateLastName = "updated_ln4";
         String updateEmail = "tommy@tomholmes.net";
         // =================================================================================
-        userEntity.setFirstname(updateFirstName);
-        userEntity.setLastname(updateLastName);
+        userEntity.setFirstName(updateFirstName);
+        userEntity.setLastName(updateLastName);
         userEntity.setEmail(updateEmail);
         // =================================================================================
         userRepository.save(userEntity);
         // =================================================================================
         userEntity = userRepository.findById(userId).orElse(null);
-        assertEquals(updateFirstName, userEntity.getFirstname());
-        assertEquals(updateLastName, userEntity.getLastname());
+        assertEquals(updateFirstName, userEntity.getFirstName());
+        assertEquals(updateLastName, userEntity.getLastName());
         assertEquals(updateEmail, userEntity.getEmail());
         // =================================================================================
         System.out.println("testUserUpdate: FINISH");

@@ -21,18 +21,18 @@ import com.tomholmes.product.htmx.demo.model.UserEntity;
 public class UserServiceImplTest
 {
     @Autowired
-    private UserService service;
+    private UserService userService;
 
     @BeforeEach
     public void setUp() throws Exception
     {
-        System.out.println("setUp: service: " + service);
+        System.out.println("setUp: userService: " + userService);
     }
 
     @AfterEach
     public void tearDown()
     {
-        service = null;
+        userService = null;
         System.out.println("tearDown: context set null.");
     }
 
@@ -58,8 +58,8 @@ public class UserServiceImplTest
         position.setId(positionId);
         position.setActive(true);
         userEntity.setPosition(position);
-        userEntity.setFirstname(firstname);
-        userEntity.setLastname(lastname);
+        userEntity.setFirstName(firstname);
+        userEntity.setLastName(lastname);
         userEntity.setUsername(username);
         userEntity.setPassword(password);
         userEntity.setSecurityQuestion1(securityQuestion1);
@@ -74,7 +74,7 @@ public class UserServiceImplTest
     {
         UserEntity userEntity = createUserEntity();
         // ==================================================
-        UserEntity newUserEntity = service.add(userEntity);
+        UserEntity newUserEntity = userService.add(userEntity);
         assertNotNull(newUserEntity);
         if (newUserEntity != null)
         {
@@ -88,7 +88,7 @@ public class UserServiceImplTest
     {
         long userId = 2;
         // ==================================================
-        UserEntity user = service.getUserById(userId);
+        UserEntity user = userService.getUserById(userId);
         assertNotNull(user);
         // ==================================================
         if (user != null)
@@ -121,8 +121,8 @@ public class UserServiceImplTest
         position.setId(positionId);
         position.setActive(true);
         userEntity.setPosition(position);
-        userEntity.setFirstname(firstname);
-        userEntity.setLastname(lastname);
+        userEntity.setFirstName(firstname);
+        userEntity.setLastName(lastname);
         userEntity.setUsername(username);
         userEntity.setPassword(password);
         userEntity.setSecurityQuestion1(securityQuestion1);
@@ -130,12 +130,12 @@ public class UserServiceImplTest
         userEntity.setSecurityQuestion2(securityQuestion2);
         userEntity.setSecurityAnswer2(securityAnswer2);
         // ==================================================
-        UserEntity user = service.update(userEntity);
+        UserEntity user = userService.update(userEntity);
         assertNotNull(user);
         if (user != null)
         {
             assertEquals(email, user.getEmail());
-            assertEquals(firstname, user.getFirstname());
+            assertEquals(firstname, user.getFirstName());
         }
         // ==================================================
         if (user != null)

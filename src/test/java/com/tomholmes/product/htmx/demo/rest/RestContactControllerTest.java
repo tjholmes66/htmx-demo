@@ -5,6 +5,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.util.List;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -16,6 +17,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.request.MockHttpServletRequestBuilder;
 import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.context.WebApplicationContext;
 
 import com.tomholmes.product.htmx.demo.model.ContactEntity;
@@ -23,6 +26,7 @@ import com.tomholmes.product.htmx.demo.model.UserEntity;
 
 @SpringBootTest
 @WebAppConfiguration
+@Transactional
 public class RestContactControllerTest
 {
     private final static String BASE_URL = "/rest/contacts";
@@ -158,19 +162,27 @@ public class RestContactControllerTest
         System.out.println("testGetContactById: FINISH");
     }
 
-    // @RequestMapping(value = "/userId/{userId}", method = RequestMethod.GET, headers = "Accept=application/json")
-    // public @ResponseBody
+    // @GetMapping(value = "/userId/{userId}", headers = "Accept=application/json")
+    //public @ResponseBody List<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)
+    @Test
+    public void testGetContactsByUserId() throws Exception
+    {
+        System.out.println("testGetContactsByUserId: START");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get(BASE_URL + "/userId/1");
+        this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
+        System.out.println("testGetContactsByUserId: FINISH");
+    }
 
-    // @RequestMapping(value = "/create", method = RequestMethod.POST, produces = "application/json",headers =
-    // "content-type=application/json")
-    // public @ResponseBody
+    // @PostMapping(value = "/create", produces = "application/json", headers = "content-type=application/json")
+    // public @ResponseBody ContactEntity createContact(@RequestBody ContactEntity contact)
 
-    // @RequestMapping(value = "/update", method = RequestMethod.PUT, produces = "application/json",headers =
-    // "content-type=application/json")
-    // public @ResponseBody
 
-    // @RequestMapping(value = "/delete/{contactId}", method = RequestMethod.DELETE, headers =
-    // "Accept=application/json")
-    // public @ResponseBody
+    // @PutMapping(value = "/update", produces = "application/json", headers = "content-type=application/json")
+    // public @ResponseBody ContactEntity updateContact(@RequestBody ContactEntity contact)
+
+
+    // @DeleteMapping(value = "/delete/{contactId}",  headers = "Accept=application/json")
+    // public @ResponseBody void deleteContact(@PathVariable("contactId") long contactId)
+
 
 }

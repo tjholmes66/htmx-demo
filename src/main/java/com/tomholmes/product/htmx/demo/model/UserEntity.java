@@ -77,11 +77,11 @@ public class UserEntity implements Serializable
 
 // `firstname` varchar(45) DEFAULT NULL,
     @Column(name = "firstname")
-    private String firstname;
+    private String firstName;
 
 // `lastname` varchar(45) DEFAULT NULL,
     @Column(name = "lastname")
-    private String lastname;
+    private String lastName;
 
 // `lastname` varchar(45) DEFAULT NULL,
     @Column(name = "email")
@@ -104,6 +104,6 @@ public class UserEntity implements Serializable
     private String securityAnswer2;
 
     @Column(name = "birthdate")
-    private LocalDate birthdate;
+    private LocalDate birthDate;
 
 }
