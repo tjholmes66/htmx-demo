@@ -8,7 +8,7 @@ EXPOSE 8888
 
 ENV APP_HOME /usr/src/app
 
-COPY target/htmx-demo-0.0.1-SNAPSHOT.jar $APP_HOME/htmx-demo.jar
+COPY target/htmx-demo-0.0.1-SNAPSHOT.jar $APP_HOME/htmx-demo-0.0.1-SNAPSHOT.jar
 
 WORKDIR $APP_HOME
 
