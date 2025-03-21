@@ -7,10 +7,16 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.SerializationFeature;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.tomholmes.product.htmx.demo.repository.ContactRepository;
+import com.tomholmes.product.htmx.demo.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.mock.web.MockHttpSession;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.test.web.servlet.MockMvc;
@@ -54,6 +60,9 @@ public class RestContactControllerTest
     private final static LocalDate birthDate = LocalDate.now();
 
     @Autowired
+    private ContactRepository contactRepository;
+
+    @Autowired
     protected WebApplicationContext context;
 
     protected MockMvc mockMvc;
@@ -72,7 +81,7 @@ public class RestContactControllerTest
     private ContactEntity createContactEntity()
     {
         ContactEntity contactEntity = new ContactEntity();
-        contactEntity.setContactId(contactId);
+        // contactEntity.setContactId(contactId);
         // =============================================
         contactEntity.setPrefix(prefix);
         contactEntity.setFirstName(firstName);
@@ -175,14 +184,53 @@ public class RestContactControllerTest
 
     // @PostMapping(value = "/create", produces = "application/json", headers = "content-type=application/json")
     // public @ResponseBody ContactEntity createContact(@RequestBody ContactEntity contact)
+    @Test
+    public void testCreateContact() throws Exception
+    {
+        ContactEntity contactEntity = createContactEntity();
 
+        ObjectMapper mapper = new ObjectMapper();
+        // Register the JavaTimeModule
+        mapper.registerModule(new JavaTimeModule());
+        // Optional: Disable writing dates as timestamps
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        String json = mapper.writeValueAsString(contactEntity);
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.post(BASE_URL + "/create").content(json).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+        this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
+    }
 
     // @PutMapping(value = "/update", produces = "application/json", headers = "content-type=application/json")
     // public @ResponseBody ContactEntity updateContact(@RequestBody ContactEntity contact)
+    @Test
+    public void testUpdateContact() throws Exception
+    {
+        Long contactId = 6L;
+        ContactEntity contactEntity =  contactRepository.findById(contactId).orElse(null);
+        contactEntity.setFirstName("UPD_FIRST_NAME");
+        contactEntity.setLastName("UPD_LAST_NAME");
 
+        ObjectMapper mapper = new ObjectMapper();
+        // Register the JavaTimeModule
+        mapper.registerModule(new JavaTimeModule());
+        // Optional: Disable writing dates as timestamps
+        mapper.disable(SerializationFeature.WRITE_DATES_AS_TIMESTAMPS);
+
+        String json = mapper.writeValueAsString(contactEntity);
+
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.put(BASE_URL + "/update").content(json).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+        this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
+    }
 
     // @DeleteMapping(value = "/delete/{contactId}",  headers = "Accept=application/json")
     // public @ResponseBody void deleteContact(@PathVariable("contactId") long contactId)
+    @Test
+    public void testDeleteContact() throws Exception {
+        Long contactId = 6L;
+        ContactEntity contactEntity = contactRepository.findById(contactId).orElse(null);
 
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.delete(BASE_URL + "/delete/{contactId}",6L).contentType(MediaType.APPLICATION_JSON).accept(MediaType.APPLICATION_JSON);
+        this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
+    }
 
 }
