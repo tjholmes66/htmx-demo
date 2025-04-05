@@ -68,6 +68,27 @@ public class ContactEmailRepositoryTest extends BaseRepositoryTests
     }
 
     @Test
+    public void testContactEmailFetchByContactEntityId() throws Exception
+    {
+        System.out.println("testContactEmailFetchByContact: START");
+        // ==========================================================================
+        Long contactId = 5L;
+        List<ContactEmailEntity> contactEmailList = contactEmailRepository.findByContactContactId(contactId);
+        assertEquals(3, contactEmailList.size());
+        // ==========================================================================
+        contact = new ContactEntity();
+        contact.setContactId(1L);
+        contactEmailList = contactEmailRepository.findByContactContactId(contactId);
+        assertEquals(3, contactEmailList.size());
+        // ==========================================================================
+        contactId = 11L;    // id does not exist
+        contactEmailList = contactEmailRepository.findByContactContactId(contactId);
+        assertEquals(0, contactEmailList.size());
+        // ==========================================================================
+        System.out.println("testContactEmailFetchByContact: FINISH");
+    }
+
+    @Test
     public void testCreate() throws Exception
     {
         System.out.println("testCreate: START");

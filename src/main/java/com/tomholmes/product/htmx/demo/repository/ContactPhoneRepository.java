@@ -14,4 +14,6 @@ public interface ContactPhoneRepository extends JpaRepository<ContactPhoneEntity
 
     List<ContactPhoneEntity> findByContact(ContactEntity contact);
 
+    List<ContactPhoneEntity> findByContactContactId(Long contactId);
+
 }

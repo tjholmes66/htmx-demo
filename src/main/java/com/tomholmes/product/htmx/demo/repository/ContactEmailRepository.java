@@ -14,4 +14,5 @@ public interface ContactEmailRepository extends JpaRepository<ContactEmailEntity
 
     List<ContactEmailEntity> findByContact(ContactEntity contact);
 
+    List<ContactEmailEntity> findByContactContactId(Long contactId);
 }

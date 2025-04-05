@@ -2,6 +2,8 @@ package com.tomholmes.product.htmx.demo.rest;
 
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.dto.ContactDTO;
+import com.tomholmes.product.htmx.demo.dto.ContactDataResponseDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,11 +43,19 @@ public class RestContactController
         return contactEntity;
     }
 
-    @GetMapping(value = "/userId/{userId}", headers = "Accept=application/json")
-    public @ResponseBody List<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)
+    @GetMapping(value = "/data/{contactId}", headers = "Accept=application/json")
+    public @ResponseBody ContactDataResponseDTO getContactDataById(@PathVariable("contactId") long contactId)
     {
-        List<ContactEntity> contactEntityList = contactService.getContactsByUserId(userId);
-        return contactEntityList;
+        ContactDataResponseDTO contactDataResponseDTO = contactService.getContactDataById(contactId);
+        System.out.println("ContactController: getContactDataById: contactEntity=" + contactDataResponseDTO);
+        return contactDataResponseDTO;
+    }
+
+    @GetMapping(value = "/userId/{userId}", headers = "Accept=application/json")
+    public @ResponseBody List<ContactDTO> getContactsByUserId(@PathVariable("userId") long userId)
+    {
+        List<ContactDTO> contactDTOList = contactService.getContactsByUserId(userId);
+        return contactDTOList;
     }
 
     @PostMapping(value = "/create", produces = "application/json", headers = "content-type=application/json")

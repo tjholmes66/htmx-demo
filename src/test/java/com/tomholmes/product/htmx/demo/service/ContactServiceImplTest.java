@@ -7,6 +7,8 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.dto.ContactDTO;
+import com.tomholmes.product.htmx.demo.dto.ContactDataResponseDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -89,7 +91,7 @@ public class ContactServiceImplTest
     @Test
     public void testGetContactsByUserId() {
         long userId = 1;
-        List<ContactEntity> contacts = service.getContactsByUserId(userId);
+        List<ContactDTO> contacts = service.getContactsByUserId(userId);
         assertEquals(1, contacts.size());
 
         userId = 2;
@@ -110,4 +112,13 @@ public class ContactServiceImplTest
     // public ContactEntity update(ContactEntity newContact)
     // public void remove(long contactId)
 
+    @Test
+    public void testGetContactDataById() {
+        Long contactId = 5L;
+        ContactDataResponseDTO contactDataResponseDTO = service.getContactDataById(contactId);
+        assertNotNull(contactDataResponseDTO);
+        assertEquals(3, contactDataResponseDTO.getEmailList().size());
+        assertEquals(3, contactDataResponseDTO.getPhoneList().size());
+        assertEquals(1, contactDataResponseDTO.getLinkList().size());
+    }
 }

@@ -10,6 +10,7 @@ import java.util.List;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
+import com.tomholmes.product.htmx.demo.dto.ContactDataResponseDTO;
 import com.tomholmes.product.htmx.demo.repository.ContactRepository;
 import com.tomholmes.product.htmx.demo.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -170,6 +171,18 @@ public class RestContactControllerTest
         this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
         System.out.println("testGetContactById: FINISH");
     }
+
+    // @GetMapping(value = "/data/{contactId}", headers = "Accept=application/json")
+    // public @ResponseBody ContactDataResponseDTO getContactDataById(@PathVariable("contactId") long contactId)
+    @Test
+    public void testGetContactDataById() throws Exception
+    {
+        System.out.println("testGetContactDataById: START");
+        MockHttpServletRequestBuilder requestBuilder = MockMvcRequestBuilders.get(BASE_URL + "/data/5");
+        this.mockMvc.perform(requestBuilder).andDo(print()).andExpect(status().isOk());
+        System.out.println("testGetContactDataById: FINISH");
+    }
+
 
     // @GetMapping(value = "/userId/{userId}", headers = "Accept=application/json")
     //public @ResponseBody List<ContactEntity> getContactsByUserId(@PathVariable("userId") long userId)

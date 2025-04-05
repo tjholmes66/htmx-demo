@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.model.ContactEmailEntity;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -63,6 +64,27 @@ public class ContactPhoneRepositoryTest extends BaseRepositoryTests
         contact = new ContactEntity();
         contact.setContactId(11L); // id does not exist
         contactPhoneList = contactPhoneRepository.findByContact(contact);
+        assertEquals(0, contactPhoneList.size());
+        // ==========================================================================
+        System.out.println("testContactPhoneFetchByContact: FINISH");
+    }
+
+    @Test
+    public void testContactPhoneFetchByContactEntityId() throws Exception
+    {
+        System.out.println("testContactPhoneFetchByContact: START");
+        // ==========================================================================
+        Long contactId = 5L;
+        List<ContactPhoneEntity> contactPhoneList = contactPhoneRepository.findByContactContactId(contactId);
+        assertEquals(3, contactPhoneList.size());
+        // ==========================================================================
+        contact = new ContactEntity();
+        contact.setContactId(1L);
+        contactPhoneList = contactPhoneRepository.findByContactContactId(contactId);
+        assertEquals(3, contactPhoneList.size());
+        // ==========================================================================
+        contactId = 11L;    // id does not exist
+        contactPhoneList = contactPhoneRepository.findByContactContactId(contactId);
         assertEquals(0, contactPhoneList.size());
         // ==========================================================================
         System.out.println("testContactPhoneFetchByContact: FINISH");

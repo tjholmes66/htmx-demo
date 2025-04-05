@@ -2,6 +2,7 @@ package com.tomholmes.product.htmx.demo.repository;
 
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.model.ContactEmailEntity;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
@@ -13,5 +14,7 @@ public interface ContactLinkRepository extends JpaRepository<ContactLinkEntity, 
 {
 
     List<ContactLinkEntity> findByContact(ContactEntity contact);
+
+    List<ContactLinkEntity> findByContactContactId(Long contactId);
 
 }

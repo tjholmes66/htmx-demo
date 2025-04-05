@@ -28,7 +28,6 @@ import lombok.With;
  */
 
 @Data
-@With
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("serial")
