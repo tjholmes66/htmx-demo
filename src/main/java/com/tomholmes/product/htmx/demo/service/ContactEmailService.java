@@ -13,4 +13,10 @@ public interface ContactEmailService
 
     List<ContactEmailEntity> getAllEmailsByContactId(ContactEntity contactEntity);
 
+    ContactEmailEntity createContactEmail(ContactEmailEntity contactEmail);
+
+    ContactEmailEntity updateContactEmail(ContactEmailEntity contactEmail);
+
+    void deleteContactEmail(ContactEmailEntity contactEmail);
+
 }

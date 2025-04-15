@@ -37,6 +37,23 @@ public class ContactEmailServiceImpl implements ContactEmailService
     }
 
     @Override
+    public ContactEmailEntity createContactEmail(ContactEmailEntity contactEmail) {
+        ContactEmailEntity contactEmailEntity = contactEmailDao.save(contactEmail);
+        return contactEmailEntity;
+    }
+
+    @Override
+    public ContactEmailEntity updateContactEmail(ContactEmailEntity contactEmail) {
+        ContactEmailEntity contactEmailEntity = contactEmailDao.save(contactEmail);
+        return contactEmailEntity;
+    }
+
+    @Override
+    public void deleteContactEmail(ContactEmailEntity contactEmail) {
+        contactEmailDao.delete(contactEmail);
+    }
+
+    @Override
     public ContactEmailEntity getEmailContactById(long emailId)
     {
         ContactEmailEntity contactEmailEntity = contactEmailDao.findById(emailId).orElse(null);
