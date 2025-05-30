@@ -1,15 +1,17 @@
-<form hx-post="/companys/create" hx-target="#companyList" hx-swap="outerHTML">
+<form hx-post="companys/create" hx-target="#companyList" hx-swap="outerHTML">
     
-    <label for="price">Code:</label><br>
-      <input type="text" id="code" name="code"><br>
+    <label for="code">Code:</label><br>
+      <input type="text" id="code" name="companyCode"><br>
     
     <label for="name">Name:</label><br>
-    <input type="text" id="name" name="name"><br>
+    <input type="text" id="name" name="companyName"><br>
     
     <label for="description">Description:</label><br>
     <input type="text" id="description" name="description"><br>
+
+    <input type="hidden" id="active" name="active" value="true"><br>
     
     <button type="submit">Create</button>
     
-    <button hx-get="/companys" hx-target="#companyForm" hx-swap="innerHTML">Cancel</button>
+    <button hx-get="companys" hx-target="#companyForm" hx-swap="innerHTML">Cancel</button>
 </form>

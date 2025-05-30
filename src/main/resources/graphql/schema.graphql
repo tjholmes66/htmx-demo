@@ -1,0 +1,16 @@
+type Query {
+    companyById(id: ID!): Company
+}
+
+type Company {
+    companyId: ID
+    active: Boolean
+    companyCode: String
+    companyName: String
+    description: String
+    address1: String
+    address2: String
+    city: String
+    state: String
+    zip: String
+}

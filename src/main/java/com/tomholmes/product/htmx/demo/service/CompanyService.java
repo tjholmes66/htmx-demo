@@ -2,6 +2,7 @@ package com.tomholmes.product.htmx.demo.service;
 
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 
 public interface CompanyService
@@ -22,6 +23,8 @@ public interface CompanyService
     CompanyEntity ceateNewCompany(CompanyEntity company);
 
     CompanyEntity findById(long companyId);
+
+    CompanyDTO findDtoById(long companyId);
 
     List<CompanyEntity> findAllCompanies();
 

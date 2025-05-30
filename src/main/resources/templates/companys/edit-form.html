@@ -1,6 +1,6 @@
 <form  th:attr="hx-post=@{/companys/edit/{id}(id=${company.companyId})}" hx-target="#companyList" hx-swap="outerHTML">
     
-    <label for="price">Code:</label><br>
+    <label for="companyCode">Code:</label><br>
      <input type="text" id="companyCode" name="companyCode" th:value="${company.companyCode}"><br>
     
     <label for="name">Name:</label><br>
@@ -10,6 +10,6 @@
     <input type="text" id="description" name="description" th:value="${company.description}"><br>
     
     <button type="submit">Update</button>
-    <button hx-get="/companys" hx-target="#companyForm" hx-swap="innerHTML">Cancel</button>
+    <button hx-get="companys" hx-target="#companyForm" hx-swap="innerHTML">Cancel</button>
     
 </form>

@@ -25,14 +25,14 @@
             <td th:text="${company.companyName}"></td>
             <td th:text="${company.description}"></td>
             <td>
-                <button  th:attr="hx-get=@{/companys/edit/{id}(id=${company.companyId})}"   hx-target="#companyForm" hx-swap="innerHTML">Edit</button>
-                <button  th:attr="hx-delete=@{/companys/delete/{id}(id=${company.companyId})}"  hx-target="#companyList" hx-swap="outerHTML">Delete</button>
+                <button  th:attr="hx-get=@{companys/edit/{id}(id=${company.companyId})}"   hx-target="#companyForm" hx-swap="innerHTML">Edit</button>
+                <button  th:attr="hx-delete=@{companys/delete/{id}(id=${company.companyId})}"  hx-target="#companyList" hx-swap="outerHTML">Delete</button>
             </td>
         </tr>
         </tbody>
     </table>
 </div>
-    <button hx-get="/companys/create" hx-target="#companyForm" hx-swap="innerHTML">Add Company</button>
+    <button hx-get="companys/create" hx-target="#companyForm" hx-swap="innerHTML">Add Company</button>
  <div id = "companyForm"> </div>
 </body>
 </html>
