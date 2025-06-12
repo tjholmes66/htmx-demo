@@ -8,7 +8,7 @@ import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 public interface CompanyService
 {
 
-    List<CompanyEntity> getAllCompanys();
+    List<CompanyDTO> getAllCompanys();
 
     CompanyEntity getCompanyById(long contactId);
 

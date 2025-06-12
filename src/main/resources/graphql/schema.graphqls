@@ -1,12 +1,13 @@
 type Query {
     companyById(id: ID!): Company
+    getAllCompanys : [Company]
 }
 
 type Company {
-    companyId: ID
-    active: Boolean
-    companyCode: String
-    companyName: String
+    companyId: ID!
+    active: Boolean!
+    companyCode: String!
+    companyName: String!
     description: String
     address1: String
     address2: String

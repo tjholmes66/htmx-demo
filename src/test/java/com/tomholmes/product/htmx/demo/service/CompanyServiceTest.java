@@ -7,6 +7,7 @@ import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -121,12 +122,12 @@ public class CompanyServiceTest
     }
 
     @Test
-    // List<CompanyEntity> getAllCompanys();
+    // List<CompanyDTO> getAllCompanys();
     public void testGetAllCompanys()
     {
-        List<CompanyEntity> companyEntityList = service.findAllCompanies();
-        assertNotNull(companyEntityList);
-        assertEquals(true, companyEntityList.size() >= 1);
+        List<CompanyDTO> companyDtoList = service.getAllCompanys();
+        assertNotNull(companyDtoList);
+        assertEquals(true, companyDtoList.size() >= 1);
     }
 
     // UPDATE ==================================================================================

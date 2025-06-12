@@ -3,6 +3,7 @@ package com.tomholmes.product.htmx.demo.service;
 import java.util.List;
 
 import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
+import com.tomholmes.product.htmx.demo.mapper.CompanyListMapper;
 import com.tomholmes.product.htmx.demo.mapper.CompanyMapper;
 import org.springframework.stereotype.Service;
 
@@ -14,11 +15,13 @@ public class CompanyServiceImpl implements CompanyService
 {
     private CompanyRepository companyRepo;
     private CompanyMapper companyMapper;
+    private CompanyListMapper companyListMapper;
 
-    public CompanyServiceImpl(CompanyRepository companyRepo, CompanyMapper companyMapper)
+    public CompanyServiceImpl(CompanyRepository companyRepo, CompanyMapper companyMapper, CompanyListMapper companyListMapper)
     {
         this.companyRepo = companyRepo;
         this.companyMapper = companyMapper;
+        this.companyListMapper = companyListMapper;
     }
 
     // CREATE ==============================================================================
@@ -61,9 +64,11 @@ public class CompanyServiceImpl implements CompanyService
     }
 
     @Override
-    public List<CompanyEntity> getAllCompanys()
+    public List<CompanyDTO> getAllCompanys()
     {
-        return companyRepo.findAll();
+        List<CompanyEntity> companyEntityList = companyRepo.findAll();
+        List<CompanyDTO> companyDtoList = companyListMapper.entityListToDtoList(companyEntityList);
+        return companyDtoList;
     }
 
     @Override

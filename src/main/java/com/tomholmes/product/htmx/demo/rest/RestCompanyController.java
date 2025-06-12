@@ -2,6 +2,7 @@ package com.tomholmes.product.htmx.demo.rest;
 
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
 import org.springframework.web.bind.annotation.*;
 
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
@@ -22,15 +23,15 @@ public class RestCompanyController
     @GetMapping(value = "", headers = "Accept=application/json")
     public List<CompanyEntity> getCompanyList1()
     {
-        List<CompanyEntity> companyEntityList = companyService.getAllCompanys();
+        List<CompanyEntity> companyEntityList = companyService.findAllCompanies();
         return companyEntityList;
     }
 
     @GetMapping(value = "/", headers = "Accept=application/json")
-    public @ResponseBody List<CompanyEntity> getCompanyList2()
+    public @ResponseBody List<CompanyDTO> getCompanyList2()
     {
-        List<CompanyEntity> companyEntityList = companyService.getAllCompanys();
-        return companyEntityList;
+        List<CompanyDTO> companyDtoList = companyService.getAllCompanys();
+        return companyDtoList;
     }
 
     @GetMapping(value = "/companyId/{companyId}", headers = "Accept=application/json")
