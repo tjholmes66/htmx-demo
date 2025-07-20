@@ -11,6 +11,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.SerializationFeature;
 import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import com.tomholmes.product.htmx.demo.dto.ContactDataResponseDTO;
+import com.tomholmes.product.htmx.demo.model.CompanyEntity;
+import com.tomholmes.product.htmx.demo.repository.CompanyRepository;
 import com.tomholmes.product.htmx.demo.repository.ContactRepository;
 import com.tomholmes.product.htmx.demo.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -64,6 +66,9 @@ public class RestContactControllerTest
     private ContactRepository contactRepository;
 
     @Autowired
+    private CompanyRepository companyRepository;
+
+    @Autowired
     protected WebApplicationContext context;
 
     protected MockMvc mockMvc;
@@ -96,7 +101,9 @@ public class RestContactControllerTest
         contactEntity.setState(state);
         contactEntity.setZip(zip);
         // =============================================
-        contactEntity.setCompanyId(companyId);
+        CompanyEntity companyEntity = companyRepository.findByCompanyId(companyId);
+        contactEntity.setCompany(companyEntity);
+        // =============================================
         contactEntity.setBirthDate(birthDate);
         // =============================================
         contactEntity.setEditedBy(editedBy);

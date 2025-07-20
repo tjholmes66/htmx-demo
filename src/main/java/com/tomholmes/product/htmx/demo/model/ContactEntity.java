@@ -104,9 +104,10 @@ public class ContactEntity implements Serializable
     @Column(name = "zip")
     private String zip;
 
-// `company_id` int(11) DEFAULT NULL,
-    @Column(name = "company_id")
-    private Long companyId;
+    // `company_id` int(11) DEFAULT NULL,
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "company_id")
+    private CompanyEntity  company;
 
 // `entered_by` int(11) DEFAULT NULL,
     @Column(name = "entered_by")

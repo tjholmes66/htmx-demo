@@ -38,8 +38,8 @@ public class ContactPhoneEntity implements Serializable
 
     // bi-directional many-to-one association to ContactEntity
     @ManyToOne(fetch = FetchType.EAGER)
-    @JoinColumn(name = "contact_id")
-    private ContactEntity contact;
+@JoinColumn(name = "contact_id")
+private ContactEntity contact;
 
     // bi-directional many-to-one association to ContactEntity
     @ManyToOne(fetch = FetchType.EAGER)

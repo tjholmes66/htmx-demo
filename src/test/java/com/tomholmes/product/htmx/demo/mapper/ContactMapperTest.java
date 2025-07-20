@@ -2,8 +2,10 @@ package com.tomholmes.product.htmx.demo.mapper;
 
 import com.tomholmes.product.htmx.demo.HtmxDemoApplication;
 import com.tomholmes.product.htmx.demo.dto.ContactDTO;
+import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.model.ContactEntity;
 import com.tomholmes.product.htmx.demo.model.UserEntity;
+import com.tomholmes.product.htmx.demo.repository.CompanyRepository;
 import com.tomholmes.product.htmx.demo.repository.UserRepository;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,7 +21,10 @@ import static org.junit.Assert.assertEquals;
 public class ContactMapperTest
 {
     @Autowired
-    private UserRepository userRepository; // repository
+    private UserRepository userRepository; //
+
+    @Autowired
+    private CompanyRepository companyRepository;
 
     @Autowired
     private ContactMapper contactMapper;
@@ -32,7 +37,7 @@ public class ContactMapperTest
     private String _dob = "11/03/1966";
     private LocalDate _birthDate = null;
     private String _city = "Randolph";
-    private long _companyId = 0;
+    private long _companyId = 1;
     private String _firstName = "first_name";
     private String _lastName = "last_name";
     private String _password = "password";
@@ -50,13 +55,15 @@ public class ContactMapperTest
         contactEntity.setAddress2(_address2);
         contactEntity.setBirthDate(_birthDate);
         contactEntity.setCity(_city);
-        contactEntity.setCompanyId(_companyId);
         contactEntity.setFirstName(_firstName);
         contactEntity.setLastName(_lastName);
         contactEntity.setPrefix(_prefix);
         contactEntity.setState(_state);
         contactEntity.setSuffix(_suffix);
         contactEntity.setZip(_zip);
+        // ***************************************************************
+        CompanyEntity companyEntity = new CompanyEntity();
+        contactEntity.setCompany(companyEntity);
         // ***************************************************************
         long userId = 1;
         UserEntity userEntity = userRepository.findById(userId).orElse(null);

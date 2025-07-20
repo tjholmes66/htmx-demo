@@ -8,15 +8,9 @@ import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.List;
 
+import com.tomholmes.product.htmx.demo.model.*;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
-
-import com.tomholmes.product.htmx.demo.model.ContactEmailEntity;
-import com.tomholmes.product.htmx.demo.model.ContactEntity;
-import com.tomholmes.product.htmx.demo.model.ContactPhoneEntity;
-import com.tomholmes.product.htmx.demo.model.EmailTypeEntity;
-import com.tomholmes.product.htmx.demo.model.PhoneTypeEntity;
-import com.tomholmes.product.htmx.demo.model.UserEntity;
 
 public class ContactRepositoryTest extends BaseRepositoryTests
 {
@@ -177,13 +171,15 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contact.setAddress2(_address2);
         contact.setBirthDate(_birthDate);
         contact.setCity(_city);
-        contact.setCompanyId(_companyId);
         contact.setFirstName(_firstName);
         contact.setLastName(_lastName);
         contact.setPrefix(_prefix);
         contact.setState(_state);
         contact.setSuffix(_suffix);
         contact.setZip(_zip);
+        // ***************************************************************
+        CompanyEntity companyEntity = new CompanyEntity();
+        contact.setCompany(companyEntity);
         // ***************************************************************
         long userId = 1;
         UserEntity userEntity = userRepository.findById(userId).orElse(null);
@@ -260,7 +256,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         assertEquals(contact.getAddress1(), address1);
         assertEquals(contact.getAddress2(), address2);
         assertEquals(contact.getCity(), city);
-        assertEquals(contact.getCompanyId(), companyId);
+        assertEquals(contact.getCompany().getCompanyId(), companyId);
         // assertEquals(contact.getFirstName(),firstName);
         assertEquals(contact.getContactId(), contactId);
         // assertEquals(contact.getLastName(),lastName);
