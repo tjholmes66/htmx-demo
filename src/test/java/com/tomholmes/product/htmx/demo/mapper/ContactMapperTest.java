@@ -1,6 +1,7 @@
 package com.tomholmes.product.htmx.demo.mapper;
 
 import com.tomholmes.product.htmx.demo.HtmxDemoApplication;
+import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
 import com.tomholmes.product.htmx.demo.dto.ContactDTO;
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.model.ContactEntity;
@@ -15,6 +16,7 @@ import org.springframework.context.annotation.ComponentScan;
 import java.time.LocalDate;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 
 @SpringBootTest(classes = HtmxDemoApplication.class)
 @ComponentScan("com.tomholmes.product.htmx.demo")
@@ -28,6 +30,9 @@ public class ContactMapperTest
 
     @Autowired
     private ContactMapper contactMapper;
+
+    @Autowired
+    private CompanyMapper companyMapper;
 
     private long _id = 2;
     private boolean _active = true;
@@ -62,7 +67,7 @@ public class ContactMapperTest
         contactEntity.setSuffix(_suffix);
         contactEntity.setZip(_zip);
         // ***************************************************************
-        CompanyEntity companyEntity = new CompanyEntity();
+        CompanyEntity companyEntity = companyRepository.findByCompanyId(_companyId);
         contactEntity.setCompany(companyEntity);
         // ***************************************************************
         long userId = 1;
@@ -73,6 +78,8 @@ public class ContactMapperTest
 
         assertEquals(contactEntity.getCity(), contactDto.getCity());
         assertEquals(contactEntity.getContactId(), contactDto.getContactId());
+        assertNotNull(contactDto.getCompany());
+        assertEquals(contactDto.getCompany().getCompanyId(), _companyId);
     }
 
     @Test
@@ -83,13 +90,16 @@ public class ContactMapperTest
         contactDto.setAddress2(_address2);
         contactDto.setBirthDate(_birthDate);
         contactDto.setCity(_city);
-        contactDto.setCompanyId(_companyId);
         contactDto.setFirstName(_firstName);
         contactDto.setLastName(_lastName);
         contactDto.setPrefix(_prefix);
         contactDto.setState(_state);
         contactDto.setSuffix(_suffix);
         contactDto.setZip(_zip);
+        // ***************************************************************
+        CompanyEntity companyEntity = companyRepository.findByCompanyId(_companyId);
+        CompanyDTO companyDto = companyMapper.entityToDTO(companyEntity);
+        contactDto.setCompany(companyDto);
         // ***************************************************************
         long userId = 1;
         UserEntity userEntity = userRepository.findById(userId).orElse(null);

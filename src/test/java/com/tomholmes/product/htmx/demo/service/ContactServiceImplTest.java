@@ -100,7 +100,7 @@ public class ContactServiceImplTest
 
         userId = 3;
         contacts = service.getContactsByUserId(userId);
-        assertEquals(2, contacts.size());
+        assertEquals(3, contacts.size());
 
         userId = 4;
         contacts = service.getContactsByUserId(userId);

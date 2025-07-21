@@ -20,6 +20,9 @@ public class ContactRepositoryTest extends BaseRepositoryTests
     @Autowired
     private UserRepository userRepository; // repository
 
+    @Autowired
+    private CompanyRepository companyRepository; // repository
+
     private long _id = 2;
     private boolean _active = true;
     private String _address1 = "123 main street";
@@ -28,7 +31,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
     private String _dob = "11/03/1966";
     private LocalDate _birthDate = null;
     private String _city = "Randolph";
-    private long _companyId = 0;
+    private Long _companyId = null;
     private String _firstName = "first_name";
     private String _lastName = "last_name";
     private String _password = "password";
@@ -137,7 +140,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         user = new UserEntity();
         user.setUserId(3L);
         contactList = contactRepository.findByUser(user);
-        assertEquals(2, contactList.size());
+        assertEquals(3, contactList.size());
 
         System.out.println("testContactFetchByUser: FINISH");
     }
@@ -155,7 +158,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         assertEquals(2, contactList.size());
 
         contactList = contactRepository.findByUserUserId(3L);
-        assertEquals(2, contactList.size());
+        assertEquals(3, contactList.size());
 
         System.out.println("testContactFetchByUser: FINISH");
     }
@@ -178,7 +181,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         contact.setSuffix(_suffix);
         contact.setZip(_zip);
         // ***************************************************************
-        CompanyEntity companyEntity = new CompanyEntity();
+        CompanyEntity companyEntity = companyRepository.findByCompanyId(1);
         contact.setCompany(companyEntity);
         // ***************************************************************
         long userId = 1;
@@ -241,7 +244,7 @@ public class ContactRepositoryTest extends BaseRepositoryTests
         String address1 = "123 main street";
         String address2 = "Apt. 456";
         String city = "Randolph";
-        long companyId = 0;
+        long companyId = 23;
         String prefix = "Mr.";
         String suffix = "Jr.";
         String state = "MA";

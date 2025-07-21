@@ -26,7 +26,7 @@ public class ContactDTO {
     private String city;
     private String state;
     private String zip;
-    private Long companyId;
+    private CompanyDTO company;
     private Long enteredBy;
     private LocalDateTime enteredDate;
     private Long editedBy;
