@@ -55,7 +55,7 @@ public class UserServiceImplTest
         userEntity.setActive(true);
         userEntity.setEmail(email);
         PositionEntity position = new PositionEntity();
-        position.setId(positionId);
+        position.setPositionId(positionId);
         position.setActive(true);
         userEntity.setPosition(position);
         userEntity.setFirstName(firstname);
@@ -118,7 +118,7 @@ public class UserServiceImplTest
         userEntity.setActive(false);
         userEntity.setEmail(email);
         PositionEntity position = new PositionEntity();
-        position.setId(positionId);
+        position.setPositionId(positionId);
         position.setActive(true);
         userEntity.setPosition(position);
         userEntity.setFirstName(firstname);

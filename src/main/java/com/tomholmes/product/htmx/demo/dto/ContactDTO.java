@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
@@ -12,10 +13,10 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class ContactDTO {
+public class ContactDTO implements Serializable {
 
     private Long contactId;
-    private UserEntity user;
+    private UserDTO user;
     private String prefix;
     private String firstName;
     private String middleName;

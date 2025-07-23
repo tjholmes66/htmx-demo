@@ -102,7 +102,7 @@ public class RestUserControllerTest
         // =============================================
         Long positionId = 1L;
         PositionEntity positionEntity = new PositionEntity();
-        positionEntity.setId(positionId);
+        positionEntity.setPositionId(positionId);
         userEntity.setPosition(positionEntity);
         // =============================================
         return userEntity;

@@ -6,17 +6,18 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class ContactEmailDTO
+public class ContactEmailDTO implements Serializable
 {
     private Long emailId;
-    private ContactEntity contact;
-    private EmailTypeEntity emailType;
+    private ContactDTO contact;
+    private EmailTypeDTO emailType;
     private String email;
     private LocalDateTime enteredDate;
 }

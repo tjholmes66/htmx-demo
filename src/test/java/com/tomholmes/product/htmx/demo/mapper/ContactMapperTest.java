@@ -3,6 +3,7 @@ package com.tomholmes.product.htmx.demo.mapper;
 import com.tomholmes.product.htmx.demo.HtmxDemoApplication;
 import com.tomholmes.product.htmx.demo.dto.CompanyDTO;
 import com.tomholmes.product.htmx.demo.dto.ContactDTO;
+import com.tomholmes.product.htmx.demo.dto.UserDTO;
 import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 import com.tomholmes.product.htmx.demo.model.ContactEntity;
 import com.tomholmes.product.htmx.demo.model.UserEntity;
@@ -24,6 +25,9 @@ public class ContactMapperTest
 {
     @Autowired
     private UserRepository userRepository; //
+
+    @Autowired
+    private UserMapper userMapper;
 
     @Autowired
     private CompanyRepository companyRepository;
@@ -103,12 +107,14 @@ public class ContactMapperTest
         // ***************************************************************
         long userId = 1;
         UserEntity userEntity = userRepository.findById(userId).orElse(null);
-        contactDto.setUser(userEntity);
+        UserDTO userDto = userMapper.entityToDTO(userEntity);
+        contactDto.setUser(userDto);
 
         ContactEntity contactEntity = contactMapper.dtoToEntity(contactDto);
 
         assertEquals(contactDto.getCity(), contactEntity.getCity());
         assertEquals(contactDto.getContactId(), contactEntity.getContactId());
+        assertEquals(contactDto.getUser().getUserId(), contactEntity.getUser().getUserId());
     }
 
 }

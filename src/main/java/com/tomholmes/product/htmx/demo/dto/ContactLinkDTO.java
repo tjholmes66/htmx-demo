@@ -6,13 +6,14 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @SuppressWarnings("serial")
-public class ContactLinkDTO
+public class ContactLinkDTO implements Serializable
 {
     private Long linkId;
     private ContactEntity contact;

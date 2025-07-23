@@ -51,7 +51,7 @@ public class UserRepositoryTest extends BaseRepositoryTests
         System.out.println("testUserCreate: START");
         // =================================================================================
         PositionEntity position = new PositionEntity();
-        position.setId(positionId);
+        position.setPositionId(positionId);
         // =================================================================================
         UserEntity user = new UserEntity();
         user.setActive(active);

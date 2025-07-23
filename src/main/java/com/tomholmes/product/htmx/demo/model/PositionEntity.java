@@ -39,13 +39,13 @@ public class PositionEntity implements Serializable
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "position_id")
-    private Long Id;
+    private Long positionId;
 
     @Column(name = "active")
     private Boolean active;
 
     @Column(name = "code")
-    private String code;
+    private String positionCode;
 
     @Column(name = "description")
     private String description;
