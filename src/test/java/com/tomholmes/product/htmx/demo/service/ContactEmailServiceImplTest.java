@@ -1,5 +1,6 @@
 package com.tomholmes.product.htmx.demo.service;
 
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 import java.time.LocalDate;
@@ -68,17 +69,59 @@ public class ContactEmailServiceImplTest
         return contactEmailDto;
     }
 
-// @Test
-// public void testCreateContactEmail() throws Exception
-// {
-// System.out.println("testCreateContactEmail: START");
-// ContactEmailEntity contactEmailDto = createContactEmailDto();
-// // ==================================================
-// ContactEmailEntity newContactEmailDto = service.add(contactEmailDto);
-// assertNotNull(newContactEmailDto);
-// // ==================================================
-// System.out.println("testCreateContactEmail: FINISH");
-// }
+    @Test
+    public void testCreateContactEmail() throws Exception
+    {
+        System.out.println("testCreateContactEmail: START");
+        ContactEmailEntity contactEmailEntity = createContactEmailDto();
+        contactEmailEntity.setEmailId(null);
+        // ==================================================
+        ContactEmailEntity newContactEmailEntity = service.createContactEmail(contactEmailEntity);
+        assertNotNull(newContactEmailEntity);
+        assertNotNull(newContactEmailEntity.getEmailId());
+        // ==================================================
+        System.out.println("testCreateContactEmail: FINISH");
+    }
+
+    @Test
+    public void testDeleteContactEmail() throws Exception
+    {
+        System.out.println("testDeleteContactEmail: START");
+        System.out.println("createContactEmail: START");
+        ContactEmailEntity contactEmailEntity = createContactEmailDto();
+        contactEmailEntity.setEmailId(null);
+        // ==================================================
+        ContactEmailEntity newContactEmailEntity = service.createContactEmail(contactEmailEntity);
+        assertNotNull(newContactEmailEntity);
+        assertNotNull(newContactEmailEntity.getEmailId());
+        System.out.println("createContactEmail: FINISH");
+        // ==================================================
+        System.out.println("deleteContactEmail: START");
+        service.deleteContactEmail(newContactEmailEntity);
+        System.out.println("deleteContactEmail: FINISH");
+        // ==================================================
+        System.out.println("testDeleteContactEmail: FINISH");
+    }
+
+    @Test
+    public void testDeleteContactEmailById() throws Exception
+    {
+        System.out.println("testDeleteContactEmail: START");
+        System.out.println("createContactEmail: START");
+        ContactEmailEntity contactEmailEntity = createContactEmailDto();
+        contactEmailEntity.setEmailId(null);
+        // ==================================================
+        ContactEmailEntity newContactEmailEntity = service.createContactEmail(contactEmailEntity);
+        assertNotNull(newContactEmailEntity);
+        assertNotNull(newContactEmailEntity.getEmailId());
+        System.out.println("createContactEmail: FINISH");
+        // ==================================================
+        System.out.println("deleteContactEmail: START");
+        service.deleteContactEmailById(newContactEmailEntity.getEmailId());
+        System.out.println("deleteContactEmail: FINISH");
+        // ==================================================
+        System.out.println("testDeleteContactEmail: FINISH");
+    }
 
     @Test
     public void testRetrieveEmailsByContactDto1() throws Exception

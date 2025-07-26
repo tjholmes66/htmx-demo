@@ -19,4 +19,6 @@ public interface ContactEmailService
 
     void deleteContactEmail(ContactEmailEntity contactEmail);
 
+    void deleteContactEmailById(Long contactEmailId);
+
 }

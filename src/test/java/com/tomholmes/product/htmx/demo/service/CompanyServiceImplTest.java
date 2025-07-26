@@ -20,7 +20,7 @@ import com.tomholmes.product.htmx.demo.model.CompanyEntity;
 @SpringBootTest(classes = HtmxDemoApplication.class)
 @ComponentScan("com.tomholmes.product.htmx.demo.services")
 @Transactional
-public class CompanyServiceTest
+public class CompanyServiceImplTest
 {
     @Autowired
     private CompanyService service;
