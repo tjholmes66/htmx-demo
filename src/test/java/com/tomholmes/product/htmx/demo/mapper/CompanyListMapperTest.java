@@ -28,26 +28,26 @@ public class CompanyListMapperTest {
     public void testDtoListToEntityList() {
         List<CompanyEntity> companyEntityList = companyRepository.findAll();
         assertNotNull(companyEntityList);
-        assertEquals(4, companyEntityList.size());
+        assertEquals(5, companyEntityList.size());
 
         List<CompanyDTO> companyDTOList = companyListMapper.entityListToDtoList(companyEntityList);
         assertNotNull(companyDTOList);
-        assertEquals(4, companyDTOList.size());
+        assertEquals(5, companyDTOList.size());
 
         companyEntityList = companyListMapper.dtoListToEntityList(companyDTOList);
         assertNotNull(companyDTOList);
-        assertEquals(4, companyDTOList.size());
+        assertEquals(5, companyDTOList.size());
     }
 
     @Test
     public void testEntityListToDtoList() {
         List<CompanyEntity> companyEntityList = companyRepository.findAll();
         assertNotNull(companyEntityList);
-        assertEquals(4, companyEntityList.size());
+        assertEquals(5, companyEntityList.size());
 
         List<CompanyDTO> companyDTOList = companyListMapper.entityListToDtoList(companyEntityList);
         assertNotNull(companyDTOList);
-        assertEquals(4, companyDTOList.size());
+        assertEquals(5, companyDTOList.size());
     }
 
 }
